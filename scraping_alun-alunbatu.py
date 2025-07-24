@@ -297,15 +297,70 @@ def clean_reviewer_name(name_text):
     return "Unknown"
 
 def clean_review_text(text):
-    """Clean review text"""
+    """Clean review text and remove entire facility sections (header + content)"""
     if not text:
         return ""
     
+    # Remove time patterns
     text = re.sub(r'\b\d{1,2}:\d{2}\b', '', text)
     text = re.sub(r'\+\d+', '', text)
-    text = re.sub(r'\s+', ' ', text)
     
-    return text.strip()
+    # Split into lines to process
+    lines = text.split('\n')
+    cleaned_lines = []
+    skip_section = False
+    
+    # Facility section headers that trigger section removal
+    facility_headers = [
+        'Taman Bermain',
+        'Toilet', 
+        'Kesesuaian untuk anjing',
+        'Area piknik'
+    ]
+    
+    for i, line in enumerate(lines):
+        line = line.strip()
+        
+        # Skip empty lines
+        if not line:
+            continue
+        
+        # Check if this line is a facility header
+        if line in facility_headers:
+            skip_section = True
+            continue
+        
+        # Check if we've reached a new section (next facility header or end)
+        if skip_section:
+            # Check if this is the start of another facility section
+            if line in facility_headers:
+                continue  # Keep skipping
+            
+            # Check if we've reached what looks like the next facility section
+            # or if we're at a line that looks like it could be the next main content
+            next_is_facility = False
+            if i + 1 < len(lines):
+                next_line = lines[i + 1].strip()
+                if next_line in facility_headers:
+                    next_is_facility = True
+            
+            # If this line looks like it's part of facility content, skip it
+            # We'll assume facility content is usually short descriptive text
+            if len(line) < 100 and not next_is_facility:
+                continue  # Skip facility content
+            else:
+                # This looks like main review content, stop skipping
+                skip_section = False
+        
+        # If we're not skipping, add the line
+        if not skip_section:
+            cleaned_lines.append(line)
+    
+    # Join back and clean up spaces
+    result = ' '.join(cleaned_lines)
+    result = re.sub(r'\s+', ' ', result)
+    
+    return result.strip()
 
 def is_owner_response(element):
     """Check if element is owner response"""
@@ -416,34 +471,16 @@ def parse_review_element_with_expand(driver, element):
         
         review_data['date'] = date
         
-        # Extract visit time
-        visit_time = ""
-        for i, line in enumerate(lines):
-            if 'waktu kunjungan' in line.lower():
-                if i + 1 < len(lines):
-                    visit_time = lines[i + 1].strip()
-                    break
-        
-        if not visit_time:
-            month_patterns = ['januari', 'februari', 'maret', 'april', 'mei', 'juni', 
-                            'juli', 'agustus', 'september', 'oktober', 'november', 'desember']
-            for line in lines:
-                for month in month_patterns:
-                    if month in line.lower() and len(line) < 50:
-                        visit_time = line.strip()
-                        break
-                if visit_time:
-                    break
-        
-        review_data['visit_time'] = visit_time
-        
-        # Extract review text
+        # Extract review text - remove entire facility sections
         review_text = ""
         review_lines = []
-        skip_keywords = ['local guide', 'ulasan', 'foto', 'waktu kunjungan', 'suka', 'bagikan', 'lainnya']
+        skip_keywords = [
+            'local guide', 'ulasan', 'foto', 'suka', 'bagikan', 'lainnya'
+        ]
         start_collecting = False
         
         for line in lines:
+            # Stop at owner response
             if any(keyword in line.lower() for keyword in ['tanggapan dari pemilik', 'response from the owner']):
                 break
             
@@ -453,13 +490,11 @@ def parse_review_element_with_expand(driver, element):
                     continue
             
             if start_collecting:
-                if 'waktu kunjungan' in line.lower():
-                    break
                 if not any(keyword in line.lower() for keyword in skip_keywords):
-                    if line.strip() and len(line.strip()) > 10:
+                    if line.strip():
                         review_lines.append(line.strip())
         
-        review_text = ' '.join(review_lines)
+        review_text = '\n'.join(review_lines)
         review_text = clean_review_text(review_text)
         review_data['review_text'] = review_text
         
@@ -477,7 +512,7 @@ def create_output_folder():
     return folder_path
 
 def scrape_alun_alun_kota_wisata_batu():
-    """Main scraping function for Alun-Alun Kota Wisata Batu with improved scrolling"""
+    """Main scraping function for Alun-Alun Kota Wisata Batu"""
     
     # URL untuk Alun-Alun Kota Wisata Batu
     url = "https://www.google.com/maps/place/Alun-Alun+Kota+Wisata+Batu/@-7.8711714,112.524344,17z/data=!3m1!4b1!4m6!3m5!1s0x2e789da3a46807f1:0xea1a51125dafb9b8!8m2!3d-7.8711714!4d112.5269243!16s%2Fg%2F11b6xr9vdl?entry=ttu&g_ep=EgoyMDI1MDcyMC4wIKXMDSoASAFQAw%3D%3D"
@@ -485,7 +520,6 @@ def scrape_alun_alun_kota_wisata_batu():
     print("Setting up Firefox driver...")
     driver = None
     all_reviews = []
-    all_reviews_without_visit_time = []
     
     # Create output folder
     output_folder = create_output_folder()
@@ -524,10 +558,10 @@ def scrape_alun_alun_kota_wisata_batu():
             return
         
         # Start collecting reviews
-        print(f"Starting to collect reviews (with improved scrolling)...")
+        print(f"Starting to collect reviews...")
         scroll_count = 0
         consecutive_no_new = 0
-        max_consecutive_no_new = 10  # Reduced from 20 for more aggressive scrolling
+        max_consecutive_no_new = 10
         
         while len(all_reviews) < target_reviews:
             try:
@@ -566,15 +600,12 @@ def scrape_alun_alun_kota_wisata_batu():
                         # Parse review with expansion
                         review_data = parse_review_element_with_expand(driver, element)
                         
-                        if review_data:
-                            all_reviews_without_visit_time.append(review_data)
+                        if review_data and review_data.get('review_text'):
+                            all_reviews.append(review_data)
+                            new_reviews_count += 1
                             
-                            if review_data.get('visit_time'):
-                                all_reviews.append(review_data)
-                                new_reviews_count += 1
-                                
-                                if len(all_reviews) % 10 == 0:
-                                    print(f"Collected {len(all_reviews)} reviews with visit_time")
+                            if len(all_reviews) % 10 == 0:
+                                print(f"Collected {len(all_reviews)} reviews")
                     
                     except Exception as e:
                         continue
@@ -584,21 +615,20 @@ def scrape_alun_alun_kota_wisata_batu():
                     consecutive_no_new += 1
                     print(f"No new reviews found (attempt {consecutive_no_new}/{max_consecutive_no_new})")
                     
-                    # Perform aggressive scrolling immediately when no new content is found
+                    # Perform aggressive scrolling
                     aggressive_scroll_and_wait(driver, scrollable_div, wait_time=2)
                     
                     # Try regular scrolling as well
                     scroll_success = scroll_to_load_more(driver, scrollable_div, scroll_attempts=5)
                     if scroll_success:
                         print("Additional content loaded after aggressive scrolling")
-                        consecutive_no_new = max(0, consecutive_no_new - 2)  # Reset counter partially
+                        consecutive_no_new = max(0, consecutive_no_new - 2)
                     
                     if consecutive_no_new >= max_consecutive_no_new:
                         print("\nReached Google Maps review limit after multiple scroll attempts.")
                         break
                 else:
                     consecutive_no_new = 0
-                    # Still scroll for more content
                     scroll_to_load_more(driver, scrollable_div, scroll_attempts=2)
                 
                 scroll_count += 1
@@ -610,46 +640,39 @@ def scrape_alun_alun_kota_wisata_batu():
             except Exception as e:
                 print(f"Error in main loop: {e}")
                 traceback.print_exc()
-                # Try to continue with aggressive scrolling
                 aggressive_scroll_and_wait(driver, scrollable_div)
                 continue
         
-        # Save final results
+        # Save final results - CSV and JSON
         print(f"\nCompleted scraping!")
-        print(f"Total reviews with visit_time: {len(all_reviews)}")
-        print(f"Total reviews collected: {len(all_reviews_without_visit_time)}")
+        print(f"Total reviews collected: {len(all_reviews)}")
         
-        if all_reviews or all_reviews_without_visit_time:
+        if all_reviews:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             
-            # Save reviews with visit_time
-            if all_reviews:
-                df = pd.DataFrame(all_reviews)
-                column_order = ['reviewer_name', 'rating', 'date', 'visit_time', 'review_text']
-                df = df.reindex(columns=column_order)
-                
-                csv_filename = os.path.join(output_folder, f'alun_alun_kota_wisata_batu_reviews_with_visit_time_{timestamp}.csv')
-                df.to_csv(csv_filename, index=False, encoding='utf-8-sig')
-                print(f"Data saved to {csv_filename}")
-                
-                json_filename = os.path.join(output_folder, f'alun_alun_kota_wisata_batu_reviews_with_visit_time_{timestamp}.json')
-                with open(json_filename, 'w', encoding='utf-8') as f:
-                    json.dump(all_reviews, f, ensure_ascii=False, indent=2)
-                print(f"JSON data saved to {json_filename}")
+            # Create DataFrame with proper column order
+            df = pd.DataFrame(all_reviews)
+            column_order = ['reviewer_name', 'rating', 'date', 'review_text']
+            df = df.reindex(columns=column_order)
             
-            # Save all reviews as backup
-            if all_reviews_without_visit_time:
-                df_all = pd.DataFrame(all_reviews_without_visit_time)
-                df_all = df_all.reindex(columns=['reviewer_name', 'rating', 'date', 'visit_time', 'review_text'], fill_value='')
-                backup_filename = os.path.join(output_folder, f'alun_alun_kota_wisata_batu_ALL_reviews_{timestamp}.csv')
-                df_all.to_csv(backup_filename, index=False, encoding='utf-8-sig')
-                print(f"Backup data saved to {backup_filename}")
+            # Save CSV file
+            csv_filename = os.path.join(output_folder, f'alun_alun_kota_wisata_batu_reviews_{timestamp}.csv')
+            df.to_csv(csv_filename, index=False, encoding='utf-8-sig')
+            print(f"✅ CSV saved to: {csv_filename}")
+            
+            # Save JSON file
+            json_filename = os.path.join(output_folder, f'alun_alun_kota_wisata_batu_reviews_{timestamp}.json')
+            with open(json_filename, 'w', encoding='utf-8') as f:
+                json.dump(all_reviews, f, ensure_ascii=False, indent=2)
+            print(f"✅ JSON saved to: {json_filename}")
             
             # Print summary statistics
-            if all_reviews and 'rating' in df.columns:
+            if 'rating' in df.columns:
                 valid_ratings = df[df['rating'] > 0]['rating']
                 if len(valid_ratings) > 0:
-                    print(f"\nAverage rating: {valid_ratings.mean():.2f}")
+                    print(f"\n📊 SUMMARY STATISTICS:")
+                    print(f"Average rating: {valid_ratings.mean():.2f}")
+                    print(f"Total reviews: {len(df)}")
                     print(f"Rating distribution:")
                     print(df['rating'].value_counts().sort_index())
         
@@ -666,12 +689,13 @@ def scrape_alun_alun_kota_wisata_batu():
                 pass
 
 if __name__ == "__main__":
-    print("=== ALUN-ALUN KOTA WISATA BATU REVIEW SCRAPER (IMPROVED SCROLLING) ===")
-    print("Target: 2000 reviews with visit_time")
-    print("Features: Aggressive scrolling, Text expansion enabled, Sort by 'Paling relevan'")
+    print("=== ALUN-ALUN KOTA WISATA BATU REVIEW SCRAPER ===")
+    print("Target: 2000 reviews")
+    print("Output: 1 CSV + 1 JSON file")
+    print("Features: Removes entire facility sections (header + content)")
     print("Output folder: hasil scraping")
-    print("Note: Will perform aggressive scrolling when no new content is found\n")
+    print("Note: Will remove entire sections: 'Taman Bermain', 'Toilet', 'Kesesuaian untuk anjing', 'Area piknik'\n")
     
     scrape_alun_alun_kota_wisata_batu()
     
-    print("\nScraping completed!")
+    print("\n✅ Scraping completed!")
