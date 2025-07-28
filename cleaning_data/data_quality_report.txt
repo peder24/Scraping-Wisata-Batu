@@ -1,0 +1,92 @@
+============================================================
+LAPORAN KUALITAS DATA - BATU TOURISM REVIEWS
+============================================================
+Generated on: 2025-07-28 23:37:37
+Total reviews: 4784
+
+1. KELENGKAPAN DATA:
+   reviewer_name: 100.0% lengkap
+   rating: 100.0% lengkap
+   date: 100.0% lengkap
+   review_text: 100.0% lengkap
+   wisata: 100.0% lengkap
+   visit_time: 100.0% lengkap
+
+2. KONSISTENSI DATA:
+   Rating dalam range 1-5: True
+   Nilai unik visit_time: 4
+   Kategori visit_time: ['Akhir pekan', 'Hari biasa', 'Hari libur nasional', 'Tidak diketahui']
+
+3. DISTRIBUSI DATA:
+   Rata-rata panjang review: 210 karakter
+   Review terpendek: 11 karakter
+   Review terpanjang: 3031 karakter
+
+4. DISTRIBUSI WAKTU KUNJUNGAN:
+   'Hari biasa': 1431 (29.9%)
+   'Akhir pekan': 1556 (32.5%)
+   'Hari libur nasional': 800 (16.7%)
+   'Tidak diketahui': 997 (20.8%)
+
+5. DISTRIBUSI RATING:
+   Rating 1: 47 (1.0%)
+   Rating 2: 35 (0.7%)
+   Rating 3: 131 (2.7%)
+   Rating 4: 769 (16.1%)
+   Rating 5: 3802 (79.5%)
+
+6. POTENSI MASALAH:
+   Review < 50 karakter: 617 (12.9%)
+   Nama reviewer hanya alfanumerik: 317
+
+7. STATISTIK PER WISATA:
+   Alun Alun Kota Wisata Batu:
+     - Total reviews: 672
+     - Avg rating: 4.61
+     - Avg review length: 262 chars
+     - Visit time distribution: {'Tidak diketahui': 672}
+   Batu Night Spectacular:
+     - Total reviews: 288
+     - Avg rating: 4.60
+     - Avg review length: 227 chars
+     - Visit time distribution: {'Hari biasa': 99, 'Akhir pekan': 124, 'Hari libur nasional': 60, 'Tidak diketahui': 5}
+   Coban Talun:
+     - Total reviews: 152
+     - Avg rating: 4.54
+     - Avg review length: 102 chars
+     - Visit time distribution: {'Hari biasa': 40, 'Akhir pekan': 81, 'Hari libur nasional': 28, 'Tidak diketahui': 3}
+   Eco Active Park:
+     - Total reviews: 852
+     - Avg rating: 4.72
+     - Avg review length: 165 chars
+     - Visit time distribution: {'Hari biasa': 328, 'Akhir pekan': 322, 'Hari libur nasional': 149, 'Tidak diketahui': 53}
+   Gunung Panderman:
+     - Total reviews: 206
+     - Avg rating: 4.63
+     - Avg review length: 134 chars
+     - Visit time distribution: {'Tidak diketahui': 206}
+   Jatim Park 1:
+     - Total reviews: 387
+     - Avg rating: 4.69
+     - Avg review length: 205 chars
+     - Visit time distribution: {'Hari biasa': 145, 'Akhir pekan': 162, 'Hari libur nasional': 71, 'Tidak diketahui': 9}
+   Jatim Park 2:
+     - Total reviews: 698
+     - Avg rating: 4.82
+     - Avg review length: 288 chars
+     - Visit time distribution: {'Hari biasa': 262, 'Akhir pekan': 269, 'Hari libur nasional': 157, 'Tidak diketahui': 10}
+   Jatim Park 3:
+     - Total reviews: 222
+     - Avg rating: 4.72
+     - Avg review length: 278 chars
+     - Visit time distribution: {'Hari biasa': 74, 'Akhir pekan': 90, 'Hari libur nasional': 53, 'Tidak diketahui': 5}
+   Museum Angkut:
+     - Total reviews: 1023
+     - Avg rating: 4.80
+     - Avg review length: 169 chars
+     - Visit time distribution: {'Hari biasa': 398, 'Akhir pekan': 382, 'Hari libur nasional': 220, 'Tidak diketahui': 23}
+   Taman Selecta:
+     - Total reviews: 284
+     - Avg rating: 4.82
+     - Avg review length: 225 chars
+     - Visit time distribution: {'Hari biasa': 85, 'Akhir pekan': 126, 'Hari libur nasional': 62, 'Tidak diketahui': 11}
