@@ -347,7 +347,7 @@ def expand_review_safely(driver, element):
         return False
 
 def parse_review_element_with_expand(driver, element):
-    """Parse a single review element with expanding"""
+    """Parse a single review element with expanding - COLLECT ALL REVIEWS"""
     try:
         if is_owner_response(element):
             return None
@@ -416,7 +416,7 @@ def parse_review_element_with_expand(driver, element):
         
         review_data['date'] = date
         
-        # Extract visit time
+        # Extract visit time (optional - bisa kosong)
         visit_time = ""
         for i, line in enumerate(lines):
             if 'waktu kunjungan' in line.lower():
@@ -435,7 +435,7 @@ def parse_review_element_with_expand(driver, element):
                 if visit_time:
                     break
         
-        review_data['visit_time'] = visit_time
+        review_data['visit_time'] = visit_time  # Bisa kosong
         
         # Extract review text
         review_text = ""
@@ -463,7 +463,13 @@ def parse_review_element_with_expand(driver, element):
         review_text = clean_review_text(review_text)
         review_data['review_text'] = review_text
         
-        return review_data
+        # PENTING: Return review bahkan jika tidak ada visit_time
+        # Asalkan ada reviewer_name dan rating atau date
+        if (review_data['reviewer_name'] != "Unknown" and 
+            (review_data['rating'] > 0 or review_data['date'])):
+            return review_data
+        
+        return None
         
     except Exception as e:
         return None
@@ -477,7 +483,7 @@ def create_output_folder():
     return folder_path
 
 def scrape_location(driver, url, location_name, target_reviews=2000):
-    """Scrape reviews for a specific location"""
+    """Scrape ALL reviews for a specific location"""
     print(f"\n{'='*50}")
     print(f"SCRAPING: {location_name}")
     print(f"{'='*50}")
@@ -515,7 +521,7 @@ def scrape_location(driver, url, location_name, target_reviews=2000):
             return []
         
         # Start collecting reviews
-        print(f"Starting to collect reviews...")
+        print(f"Starting to collect ALL reviews...")
         scroll_count = 0
         consecutive_no_new = 0
         max_consecutive_no_new = 10
@@ -554,15 +560,16 @@ def scrape_location(driver, url, location_name, target_reviews=2000):
                         
                         processed_reviews.add(review_id)
                         
-                        # Parse review with expansion
+                        # Parse review with expansion - COLLECT ALL VALID REVIEWS
                         review_data = parse_review_element_with_expand(driver, element)
                         
-                        if review_data and review_data.get('visit_time'):
+                        # PENTING: Terima semua review valid, tidak hanya yang ada visit_time
+                        if review_data:
                             all_reviews.append(review_data)
                             new_reviews_count += 1
                             
                             if len(all_reviews) % 10 == 0:
-                                print(f"Collected {len(all_reviews)} reviews with visit_time")
+                                print(f"Collected {len(all_reviews)} reviews")
                     
                     except Exception as e:
                         continue
@@ -612,10 +619,10 @@ def scrape_location(driver, url, location_name, target_reviews=2000):
         return []
 
 def main():
-    """Main function to scrape both locations"""
+    """Main function to scrape both locations - COLLECT ALL REVIEWS"""
     print("=== SONGGORITI HOT SPRINGS & TIRTA NIRWANA REVIEW SCRAPER ===")
-    print("Target: 2000 reviews per location (with visit_time only)")
-    print("Output: CSV files only\n")
+    print("Target: 2000 reviews per location (ALL REVIEWS)")
+    print("Output: Multiple CSV files (all, with visit_time, without visit_time)\n")
     
     # URLs untuk kedua lokasi
     locations = [
@@ -653,15 +660,33 @@ def main():
                     column_order = ['reviewer_name', 'rating', 'date', 'visit_time', 'review_text']
                     df = df.reindex(columns=column_order)
                     
-                    # Save CSV
-                    csv_filename = os.path.join(output_folder, f'{location["filename"]}_reviews_{timestamp}.csv')
-                    df.to_csv(csv_filename, index=False, encoding='utf-8-sig')
-                    print(f"✅ Data saved to {csv_filename}")
+                    # Save ALL reviews
+                    csv_all_filename = os.path.join(output_folder, f'{location["filename"]}_all_reviews_{timestamp}.csv')
+                    df.to_csv(csv_all_filename, index=False, encoding='utf-8-sig')
+                    print(f"✅ All reviews saved to {csv_all_filename}")
+                    
+                    # Separate files for reviews with and without visit_time
+                    reviews_with_visit_time = df[df['visit_time'].notna() & (df['visit_time'] != '')]
+                    reviews_without_visit_time = df[df['visit_time'].isna() | (df['visit_time'] == '')]
+                    
+                    if len(reviews_with_visit_time) > 0:
+                        csv_with_visit = os.path.join(output_folder, f'{location["filename"]}_with_visit_time_{timestamp}.csv')
+                        reviews_with_visit_time.to_csv(csv_with_visit, index=False, encoding='utf-8-sig')
+                        print(f"✅ Reviews with visit_time: {len(reviews_with_visit_time)} saved to {csv_with_visit}")
+                    
+                    if len(reviews_without_visit_time) > 0:
+                        csv_without_visit = os.path.join(output_folder, f'{location["filename"]}_without_visit_time_{timestamp}.csv')
+                        reviews_without_visit_time.to_csv(csv_without_visit, index=False, encoding='utf-8-sig')
+                        print(f"✅ Reviews without visit_time: {len(reviews_without_visit_time)} saved to {csv_without_visit}")
                     
                     # Print summary statistics
                     if 'rating' in df.columns:
                         valid_ratings = df[df['rating'] > 0]['rating']
                         if len(valid_ratings) > 0:
+                            print(f"\nSummary for {location['name']}:")
+                            print(f"Total reviews: {len(df)}")
+                            print(f"Reviews with visit_time: {len(reviews_with_visit_time)}")  
+                            print(f"Reviews without visit_time: {len(reviews_without_visit_time)}")
                             print(f"Average rating: {valid_ratings.mean():.2f}")
                             print(f"Rating distribution:")
                             print(df['rating'].value_counts().sort_index())

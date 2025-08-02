@@ -17,6 +17,8 @@ import gc
 import traceback
 import os
 
+
+
 def setup_driver():
     """Setup Firefox driver dengan optimasi maksimal untuk mengurangi lag"""
     options = FirefoxOptions()
@@ -68,6 +70,8 @@ def setup_driver():
     
     return driver
 
+
+
 def is_driver_alive(driver):
     """Check if driver is still responsive"""
     try:
@@ -75,6 +79,8 @@ def is_driver_alive(driver):
         return True
     except:
         return False
+
+
 
 def safe_execute_script(driver, script, *args):
     """Safely execute JavaScript"""
@@ -85,6 +91,8 @@ def safe_execute_script(driver, script, *args):
     except:
         return None
 
+
+
 def safe_get_attribute(element, attribute, default=None):
     """Safely get element attribute"""
     try:
@@ -92,12 +100,16 @@ def safe_get_attribute(element, attribute, default=None):
     except:
         return default
 
+
+
 def safe_get_text(element, default=""):
     """Safely get element text"""
     try:
         return element.text
     except:
         return default
+
+
 
 def safe_click(driver, element):
     """Safely click an element"""
@@ -108,6 +120,8 @@ def safe_click(driver, element):
         return True
     except:
         return False
+
+
 
 def click_sort_button(driver):
     """Click the sort button and select 'Paling relevan'"""
@@ -167,6 +181,8 @@ def click_sort_button(driver):
         print(f"Error clicking sort button: {e}")
         return False
 
+
+
 def find_scrollable_container(driver):
     """Find the correct scrollable container"""
     try:
@@ -202,6 +218,8 @@ def find_scrollable_container(driver):
     except Exception as e:
         print(f"Error finding scrollable container: {e}")
         return None
+
+
 
 def scroll_to_load_more(driver, scrollable_div, scroll_attempts=3):
     """Scroll to load more reviews with multiple scroll attempts"""
@@ -244,6 +262,8 @@ def scroll_to_load_more(driver, scrollable_div, scroll_attempts=3):
         print(f"Error scrolling: {e}")
         return False
 
+
+
 def aggressive_scroll_and_wait(driver, scrollable_div, wait_time=3):
     """Aggressive scrolling when no new content is found"""
     try:
@@ -282,6 +302,8 @@ def aggressive_scroll_and_wait(driver, scrollable_div, wait_time=3):
         print(f"Error in aggressive scrolling: {e}")
         return False
 
+
+
 def clean_reviewer_name(name_text):
     """Extract only the reviewer name"""
     if not name_text:
@@ -296,6 +318,8 @@ def clean_reviewer_name(name_text):
     
     return "Unknown"
 
+
+
 def clean_review_text(text):
     """Clean review text"""
     if not text:
@@ -306,6 +330,8 @@ def clean_review_text(text):
     text = re.sub(r'\s+', ' ', text)
     
     return text.strip()
+
+
 
 def is_owner_response(element):
     """Check if element is owner response"""
@@ -320,6 +346,8 @@ def is_owner_response(element):
         return any(indicator in text for indicator in owner_indicators)
     except:
         return False
+
+
 
 def expand_review_safely(driver, element):
     """Safely expand review text (but not owner responses)"""
@@ -346,8 +374,10 @@ def expand_review_safely(driver, element):
     except:
         return False
 
+
+
 def parse_review_element_with_expand(driver, element):
-    """Parse a single review element with expanding"""
+    """Parse a single review element with expanding - COLLECT ALL REVIEWS"""
     try:
         if is_owner_response(element):
             return None
@@ -416,7 +446,7 @@ def parse_review_element_with_expand(driver, element):
         
         review_data['date'] = date
         
-        # Extract visit time
+        # Extract visit time (optional - bisa kosong)
         visit_time = ""
         for i, line in enumerate(lines):
             if 'waktu kunjungan' in line.lower():
@@ -435,7 +465,7 @@ def parse_review_element_with_expand(driver, element):
                 if visit_time:
                     break
         
-        review_data['visit_time'] = visit_time
+        review_data['visit_time'] = visit_time  # Bisa kosong
         
         # Extract review text
         review_text = ""
@@ -463,10 +493,18 @@ def parse_review_element_with_expand(driver, element):
         review_text = clean_review_text(review_text)
         review_data['review_text'] = review_text
         
-        return review_data
+        # PENTING: Return review bahkan jika tidak ada visit_time
+        # Asalkan ada reviewer_name dan rating atau date
+        if (review_data['reviewer_name'] != "Unknown" and 
+            (review_data['rating'] > 0 or review_data['date'])):
+            return review_data
+        
+        return None
         
     except Exception as e:
         return None
+
+
 
 def create_output_folder():
     """Create hasil scraping folder if it doesn't exist"""
@@ -476,8 +514,10 @@ def create_output_folder():
         print(f"Created folder: {folder_path}")
     return folder_path
 
+
+
 def scrape_coban_putri():
-    """Main scraping function for Coban Putri with improved scrolling"""
+    """Main scraping function for Coban Putri - COLLECT ALL REVIEWS"""
     
     # URL untuk Coban Putri
     url = "https://www.google.com/maps/place/Coban+Putri/@-7.9119954,112.5276734,17z/data=!3m1!4b1!4m6!3m5!1s0x2e788186fc5f154f:0xd8c91b109ae0c80b!8m2!3d-7.9119954!4d112.5302537!16s%2Fg%2F11rdb7x0ky?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D"
@@ -523,7 +563,7 @@ def scrape_coban_putri():
             return
         
         # Start collecting reviews
-        print(f"Starting to collect reviews (with improved scrolling)...")
+        print(f"Starting to collect ALL reviews (improved scrolling)...")
         scroll_count = 0
         consecutive_no_new = 0
         max_consecutive_no_new = 10
@@ -562,15 +602,16 @@ def scrape_coban_putri():
                         
                         processed_reviews.add(review_id)
                         
-                        # Parse review with expansion
+                        # Parse review with expansion - COLLECT ALL VALID REVIEWS
                         review_data = parse_review_element_with_expand(driver, element)
                         
-                        if review_data and review_data.get('visit_time'):
+                        # PENTING: Terima semua review valid, tidak hanya yang ada visit_time
+                        if review_data:
                             all_reviews.append(review_data)
                             new_reviews_count += 1
                             
                             if len(all_reviews) % 10 == 0:
-                                print(f"Collected {len(all_reviews)} reviews with visit_time")
+                                print(f"Collected {len(all_reviews)} reviews")
                     
                     except Exception as e:
                         continue
@@ -611,29 +652,47 @@ def scrape_coban_putri():
         
         # Save final results
         print(f"\nCompleted scraping!")
-        print(f"Total reviews with visit_time: {len(all_reviews)}")
+        print(f"Total reviews collected: {len(all_reviews)}")
         
         if all_reviews:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             
-            # Save reviews with visit_time
+            # Save ALL reviews
             df = pd.DataFrame(all_reviews)
             column_order = ['reviewer_name', 'rating', 'date', 'visit_time', 'review_text']
             df = df.reindex(columns=column_order)
             
-            csv_filename = os.path.join(output_folder, f'coban_putri_reviews_{timestamp}.csv')
+            csv_filename = os.path.join(output_folder, f'coban_putri_reviews_all_{timestamp}.csv')
             df.to_csv(csv_filename, index=False, encoding='utf-8-sig')
-            print(f"✅ Data saved to {csv_filename}")
+            print(f"✅ All reviews saved to {csv_filename}")
+            
+            # Separate files for reviews with and without visit_time
+            reviews_with_visit_time = df[df['visit_time'].notna() & (df['visit_time'] != '')]
+            reviews_without_visit_time = df[df['visit_time'].isna() | (df['visit_time'] == '')]
+            
+            if len(reviews_with_visit_time) > 0:
+                csv_with_visit = os.path.join(output_folder, f'coban_putri_with_visit_time_{timestamp}.csv')
+                reviews_with_visit_time.to_csv(csv_with_visit, index=False, encoding='utf-8-sig')
+                print(f"✅ Reviews with visit_time: {len(reviews_with_visit_time)} saved to {csv_with_visit}")
+            
+            if len(reviews_without_visit_time) > 0:
+                csv_without_visit = os.path.join(output_folder, f'coban_putri_without_visit_time_{timestamp}.csv')
+                reviews_without_visit_time.to_csv(csv_without_visit, index=False, encoding='utf-8-sig')
+                print(f"✅ Reviews without visit_time: {len(reviews_without_visit_time)} saved to {csv_without_visit}")
             
             # Print summary statistics
             if 'rating' in df.columns:
                 valid_ratings = df[df['rating'] > 0]['rating']
                 if len(valid_ratings) > 0:
-                    print(f"\nAverage rating: {valid_ratings.mean():.2f}")
+                    print(f"\nSummary Statistics:")
+                    print(f"Total reviews: {len(df)}")
+                    print(f"Reviews with visit_time: {len(reviews_with_visit_time)}")  
+                    print(f"Reviews without visit_time: {len(reviews_without_visit_time)}")
+                    print(f"Average rating: {valid_ratings.mean():.2f}")
                     print(f"Rating distribution:")
                     print(df['rating'].value_counts().sort_index())
         else:
-            print("❌ No reviews with visit_time collected")
+            print("❌ No reviews collected")
         
     except Exception as e:
         print(f"Fatal error: {str(e)}")
@@ -647,12 +706,14 @@ def scrape_coban_putri():
             except:
                 pass
 
+
+
 if __name__ == "__main__":
     print("=== COBAN PUTRI REVIEW SCRAPER ===")
-    print("Target: 2000 reviews with visit_time")
+    print("Target: 2000 reviews (ALL REVIEWS)")
     print("Features: Aggressive scrolling, Text expansion enabled, Sort by 'Paling relevan'")
     print("Output folder: hasil scraping")
-    print("Note: Only reviews with visit_time will be saved\n")
+    print("Note: Will collect ALL valid reviews, not just those with visit_time\n")
     
     scrape_coban_putri()
     

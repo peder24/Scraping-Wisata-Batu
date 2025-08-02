@@ -347,7 +347,7 @@ def expand_review_safely(driver, element):
         return False
 
 def parse_review_element_with_expand(driver, element):
-    """Parse a single review element with expanding"""
+    """Parse a single review element with expanding - COLLECT ALL REVIEWS"""
     try:
         if is_owner_response(element):
             return None
@@ -416,7 +416,7 @@ def parse_review_element_with_expand(driver, element):
         
         review_data['date'] = date
         
-        # Extract visit time
+        # Extract visit time (optional - bisa kosong)
         visit_time = ""
         for i, line in enumerate(lines):
             if 'waktu kunjungan' in line.lower():
@@ -435,7 +435,7 @@ def parse_review_element_with_expand(driver, element):
                 if visit_time:
                     break
         
-        review_data['visit_time'] = visit_time
+        review_data['visit_time'] = visit_time  # Bisa kosong
         
         # Extract review text
         review_text = ""
@@ -463,7 +463,13 @@ def parse_review_element_with_expand(driver, element):
         review_text = clean_review_text(review_text)
         review_data['review_text'] = review_text
         
-        return review_data
+        # PENTING: Return review bahkan jika tidak ada visit_time
+        # Asalkan ada reviewer_name dan rating atau date
+        if (review_data['reviewer_name'] != "Unknown" and 
+            (review_data['rating'] > 0 or review_data['date'])):
+            return review_data
+        
+        return None
         
     except Exception as e:
         return None
@@ -476,15 +482,15 @@ def create_output_folder():
         print(f"Created folder: {folder_path}")
     return folder_path
 
-def scrape_pemandian_air_panas_cangar():
-    """Main scraping function for Pemandian Air Panas Cangar - ALL REVIEWS ONLY"""
+def scrape_wisata_bunga_sidomulyo():
+    """Main scraping function for Wisata Bunga Desa Sidomulyo - COLLECT ALL REVIEWS"""
     
-    # URL untuk Pemandian Air Panas Cangar
-    url = "https://www.google.com/maps/place/Pemandian+Air+Panas+Cangar/@-7.741749,112.5294449,17z/data=!4m8!3m7!1s0x2e787c3aaaaaaaab:0xbe4aabe6601d0db9!8m2!3d-7.741749!4d112.5343105!9m1!1b1!16s%2Fg%2F1pzq9vl1l?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+    # URL untuk Wisata Bunga Desa Sidomulyo
+    url = "https://www.google.com/maps/place/Wisata+Bunga+Desa+Sidomulyo/@-7.8440381,112.520716,17z/data=!3m1!4b1!4m6!3m5!1s0x2e787d4f9ee0a669:0x8358f53b25036bcb!8m2!3d-7.8440381!4d112.5232963!16s%2Fg%2F11f73_b04c?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D"
     
     print("Setting up Firefox driver...")
     driver = None
-    all_reviews = []  # Only one list for all reviews
+    all_reviews = []
     
     # Create output folder
     output_folder = create_output_folder()
@@ -494,7 +500,7 @@ def scrape_pemandian_air_panas_cangar():
         processed_reviews = set()
         target_reviews = 2000
         
-        print("Opening Pemandian Air Panas Cangar page...")
+        print("Opening Wisata Bunga Desa Sidomulyo page...")
         driver.get(url)
         time.sleep(5)
         
@@ -523,7 +529,7 @@ def scrape_pemandian_air_panas_cangar():
             return
         
         # Start collecting reviews
-        print(f"Starting to collect ALL reviews (target: {target_reviews})...")
+        print(f"Starting to collect ALL reviews...")
         scroll_count = 0
         consecutive_no_new = 0
         max_consecutive_no_new = 10
@@ -562,27 +568,19 @@ def scrape_pemandian_air_panas_cangar():
                         
                         processed_reviews.add(review_id)
                         
-                        # Parse review with expansion
+                        # Parse review with expansion - COLLECT ALL VALID REVIEWS
                         review_data = parse_review_element_with_expand(driver, element)
                         
+                        # PENTING: Terima semua review valid
                         if review_data:
-                            all_reviews.append(review_data)  # Add to single list
+                            all_reviews.append(review_data)
                             new_reviews_count += 1
                             
-                            if len(all_reviews) % 50 == 0:
-                                print(f"✓ Collected {len(all_reviews)} reviews")
-                            
-                            # Stop if we reached target
-                            if len(all_reviews) >= target_reviews:
-                                print(f"Reached target of {target_reviews} reviews!")
-                                break
+                            if len(all_reviews) % 10 == 0:
+                                print(f"Collected {len(all_reviews)} reviews")
                     
                     except Exception as e:
                         continue
-                
-                # Break if target reached
-                if len(all_reviews) >= target_reviews:
-                    break
                 
                 # Check progress and handle no new content
                 if new_reviews_count == 0:
@@ -596,7 +594,7 @@ def scrape_pemandian_air_panas_cangar():
                     scroll_success = scroll_to_load_more(driver, scrollable_div, scroll_attempts=5)
                     if scroll_success:
                         print("Additional content loaded after aggressive scrolling")
-                        consecutive_no_new = max(0, consecutive_no_new - 2)  # Reset counter partially
+                        consecutive_no_new = max(0, consecutive_no_new - 2)
                     
                     if consecutive_no_new >= max_consecutive_no_new:
                         print("\nReached Google Maps review limit after multiple scroll attempts.")
@@ -614,7 +612,6 @@ def scrape_pemandian_air_panas_cangar():
                 
             except Exception as e:
                 print(f"Error in main loop: {e}")
-                traceback.print_exc()
                 # Try to continue with aggressive scrolling
                 aggressive_scroll_and_wait(driver, scrollable_div)
                 continue
@@ -626,35 +623,32 @@ def scrape_pemandian_air_panas_cangar():
         if all_reviews:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             
-            # Create DataFrame
+            # Save ALL reviews in one file
             df = pd.DataFrame(all_reviews)
             column_order = ['reviewer_name', 'rating', 'date', 'visit_time', 'review_text']
-            df = df.reindex(columns=column_order, fill_value='')
+            df = df.reindex(columns=column_order)
             
-            # Save CSV
-            csv_filename = os.path.join(output_folder, f'pemandian_air_panas_cangar_ALL_reviews_{timestamp}.csv')
+            csv_filename = os.path.join(output_folder, f'wisata_bunga_sidomulyo_reviews_{timestamp}.csv')
             df.to_csv(csv_filename, index=False, encoding='utf-8-sig')
-            print(f"✅ CSV data saved to {csv_filename}")
-            
-            # Save JSON
-            json_filename = os.path.join(output_folder, f'pemandian_air_panas_cangar_ALL_reviews_{timestamp}.json')
-            with open(json_filename, 'w', encoding='utf-8') as f:
-                json.dump(all_reviews, f, ensure_ascii=False, indent=2)
-            print(f"✅ JSON data saved to {json_filename}")
+            print(f"✅ All reviews saved to {csv_filename}")
             
             # Print summary statistics
             if 'rating' in df.columns:
                 valid_ratings = df[df['rating'] > 0]['rating']
+                reviews_with_visit_time = df[df['visit_time'].notna() & (df['visit_time'] != '')]
+                reviews_without_visit_time = df[df['visit_time'].isna() | (df['visit_time'] == '')]
+                
+                print(f"\nSummary Statistics:")
+                print(f"Total reviews: {len(df)}")
+                print(f"Reviews with visit_time: {len(reviews_with_visit_time)}")  
+                print(f"Reviews without visit_time: {len(reviews_without_visit_time)}")
+                
                 if len(valid_ratings) > 0:
-                    print(f"\n📊 SUMMARY STATISTICS:")
                     print(f"Average rating: {valid_ratings.mean():.2f}")
                     print(f"Rating distribution:")
                     print(df['rating'].value_counts().sort_index())
-                
-                # Count reviews with visit_time
-                reviews_with_visit_time = df[df['visit_time'].str.strip() != '']
-                print(f"\nReviews with visit_time: {len(reviews_with_visit_time)}")
-                print(f"Reviews without visit_time: {len(df) - len(reviews_with_visit_time)}")
+        else:
+            print("❌ No reviews collected")
         
     except Exception as e:
         print(f"Fatal error: {str(e)}")
@@ -669,12 +663,12 @@ def scrape_pemandian_air_panas_cangar():
                 pass
 
 if __name__ == "__main__":
-    print("=== PEMANDIAN AIR PANAS CANGAR REVIEW SCRAPER (ALL REVIEWS) ===")
-    print("Target: 2000 reviews (ALL reviews regardless of visit_time)")
+    print("=== WISATA BUNGA DESA SIDOMULYO REVIEW SCRAPER ===")
+    print("Target: 2000 reviews (ALL REVIEWS)")
     print("Features: Aggressive scrolling, Text expansion enabled, Sort by 'Paling relevan'")
     print("Output folder: hasil scraping")
-    print("Note: Collects ALL reviews, not just those with visit_time\n")
+    print("Note: Will collect ALL valid reviews (with and without visit_time)\n")
     
-    scrape_pemandian_air_panas_cangar()
+    scrape_wisata_bunga_sidomulyo()
     
-    print("\nScraping completed!")
+    print("\n🎉 Scraping completed!")

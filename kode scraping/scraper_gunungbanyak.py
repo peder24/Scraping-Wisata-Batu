@@ -476,11 +476,11 @@ def create_output_folder():
         print(f"Created folder: {folder_path}")
     return folder_path
 
-def scrape_gunung_banyak():
-    """Main scraping function for Gunung Banyak with improved scrolling"""
+def scrape_paralayang_gunung_banyak():
+    """Main scraping function for Paralayang Gunung Banyak with improved scrolling"""
     
-    # URL untuk Gunung Banyak
-    url = "https://www.google.com/maps/place/Gn.+Banyak/@-8.2319424,112.5355181,14z/data=!4m8!3m7!1s0x2e78a0dfb00bf095:0xe17f9a6f333cd683!8m2!3d-8.2319444!4d112.5744444!9m1!1b1!16s%2Fg%2F11b_2qqkf0?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+    # URL untuk Paralayang Gunung Banyak, Batu, Malang
+    url = "https://www.google.com/maps/place/Paralayang+Gunung+Banyak,+Batu,+Malang/@-7.8550899,112.4917078,17z/data=!4m8!3m7!1s0x2e788735bbd40639:0x4a4445e74cee55e2!8m2!3d-7.8550899!4d112.4965734!9m1!1b1!16s%2Fg%2F11sk2tks84?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D"
     
     print("Setting up Firefox driver...")
     driver = None
@@ -494,7 +494,7 @@ def scrape_gunung_banyak():
         processed_reviews = set()
         target_reviews = 2000
         
-        print("Opening Gunung Banyak page...")
+        print("Opening Paralayang Gunung Banyak page...")
         driver.get(url)
         time.sleep(5)
         
@@ -621,11 +621,11 @@ def scrape_gunung_banyak():
             column_order = ['reviewer_name', 'rating', 'date', 'visit_time', 'review_text']
             df = df.reindex(columns=column_order)
             
-            csv_filename = os.path.join(output_folder, f'gunung_banyak_reviews_{timestamp}.csv')
+            csv_filename = os.path.join(output_folder, f'paralayang_gunung_banyak_reviews_{timestamp}.csv')
             df.to_csv(csv_filename, index=False, encoding='utf-8-sig')
             print(f"Data saved to {csv_filename}")
             
-            json_filename = os.path.join(output_folder, f'gunung_banyak_reviews_{timestamp}.json')
+            json_filename = os.path.join(output_folder, f'paralayang_gunung_banyak_reviews_{timestamp}.json')
             with open(json_filename, 'w', encoding='utf-8') as f:
                 json.dump(all_reviews, f, ensure_ascii=False, indent=2)
             print(f"JSON data saved to {json_filename}")
@@ -656,12 +656,13 @@ def scrape_gunung_banyak():
                 pass
 
 if __name__ == "__main__":
-    print("=== GUNUNG BANYAK REVIEW SCRAPER (ALL REVIEWS) ===")
+    print("=== PARALAYANG GUNUNG BANYAK REVIEW SCRAPER (ALL REVIEWS) ===")
+    print("Location: Paralayang Gunung Banyak, Batu, Malang")
     print("Target: 2000 reviews (visit_time not required)")
     print("Features: Aggressive scrolling, Text expansion enabled, Sort by 'Paling relevan'")
     print("Output folder: hasil scraping")
     print("Note: Will collect ALL reviews regardless of visit_time presence\n")
     
-    scrape_gunung_banyak()
+    scrape_paralayang_gunung_banyak()
     
     print("\nScraping completed!")
