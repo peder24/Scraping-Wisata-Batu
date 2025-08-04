@@ -110,7 +110,7 @@ def safe_click(driver, element):
         return False
 
 def click_sort_button(driver):
-    """Click the sort button and select 'Paling relevan'"""
+    """Click the sort button and select 'Terbaru'"""
     try:
         print("Looking for sort button...")
         
@@ -141,26 +141,26 @@ def click_sort_button(driver):
         safe_click(driver, sort_button)
         time.sleep(2)
         
-        # Look for "Paling relevan" option
-        print("Looking for 'Paling relevan' option...")
-        relevant_option_selectors = [
-            "//div[@role='menuitemradio'][contains(., 'Paling relevan')]",
-            "//div[contains(@class, 'fxNQSd')][contains(text(), 'Paling relevan')]",
-            "//div[@data-index='1'][contains(., 'Paling relevan')]"
+        # Look for "Terbaru" option
+        print("Looking for 'Terbaru' option...")
+        terbaru_option_selectors = [
+            "//div[@role='menuitemradio'][contains(., 'Terbaru')]",
+            "//div[contains(@class, 'fxNQSd')][contains(text(), 'Terbaru')]",
+            "//div[@data-index='1'][contains(., 'Terbaru')]"
         ]
         
-        for selector in relevant_option_selectors:
+        for selector in terbaru_option_selectors:
             try:
-                relevant_option = driver.find_element(By.XPATH, selector)
-                if relevant_option:
-                    safe_click(driver, relevant_option)
-                    print("Selected 'Paling relevan' sorting")
+                terbaru_option = driver.find_element(By.XPATH, selector)
+                if terbaru_option:
+                    safe_click(driver, terbaru_option)
+                    print("Selected 'Terbaru' sorting")
                     time.sleep(3)
                     return True
             except:
                 continue
         
-        print("Could not find 'Paling relevan' option")
+        print("Could not find 'Terbaru' option")
         return False
         
     except Exception as e:
@@ -512,7 +512,7 @@ def scrape_gussari_goa_pinus_batu():
             print("Could not find reviews tab")
             return
         
-        # Click sort button and select "Paling relevan"
+        # Click sort button and select "Terbaru"
         click_sort_button(driver)
         
         # Find scrollable container
@@ -668,7 +668,7 @@ def scrape_gussari_goa_pinus_batu():
 if __name__ == "__main__":
     print("=== GUSSARI GOA PINUS BATU REVIEW SCRAPER (IMPROVED SCROLLING) ===")
     print("Target: 2000 reviews with visit_time")
-    print("Features: Aggressive scrolling, Text expansion enabled, Sort by 'Paling relevan'")
+    print("Features: Aggressive scrolling, Text expansion enabled, Sort by 'Terbaru'")
     print("Output folder: hasil scraping")
     print("Note: Will perform aggressive scrolling when no new content is found\n")
     
