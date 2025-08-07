@@ -1,16 +1,17 @@
 ============================================================
 LAPORAN KUALITAS DATA - BATU TOURISM REVIEWS
 ============================================================
-Generated on: 2025-07-28 23:37:37
-Total reviews: 4784
+Generated on: 2025-08-07 20:28:58
+Total reviews: 22784
+Total wisata: 28
 
 1. KELENGKAPAN DATA:
-   reviewer_name: 100.0% lengkap
+   reviewer_name: 99.9% lengkap
    rating: 100.0% lengkap
    date: 100.0% lengkap
+   visit_time: 100.0% lengkap
    review_text: 100.0% lengkap
    wisata: 100.0% lengkap
-   visit_time: 100.0% lengkap
 
 2. KONSISTENSI DATA:
    Rating dalam range 1-5: True
@@ -18,75 +19,50 @@ Total reviews: 4784
    Kategori visit_time: ['Akhir pekan', 'Hari biasa', 'Hari libur nasional', 'Tidak diketahui']
 
 3. DISTRIBUSI DATA:
-   Rata-rata panjang review: 210 karakter
+   Rata-rata panjang review: 176 karakter
    Review terpendek: 11 karakter
-   Review terpanjang: 3031 karakter
+   Review terpanjang: 3242 karakter
+   Rata-rata rating keseluruhan: 4.55
 
 4. DISTRIBUSI WAKTU KUNJUNGAN:
-   'Hari biasa': 1431 (29.9%)
-   'Akhir pekan': 1556 (32.5%)
-   'Hari libur nasional': 800 (16.7%)
-   'Tidak diketahui': 997 (20.8%)
+   'Hari biasa': 2120 (9.3%)
+   'Akhir pekan': 2505 (11.0%)
+   'Hari libur nasional': 1125 (4.9%)
+   'Tidak diketahui': 17034 (74.8%)
 
 5. DISTRIBUSI RATING:
-   Rating 1: 47 (1.0%)
-   Rating 2: 35 (0.7%)
-   Rating 3: 131 (2.7%)
-   Rating 4: 769 (16.1%)
-   Rating 5: 3802 (79.5%)
+   Rating 1: 524 (2.3%)
+   Rating 2: 355 (1.6%)
+   Rating 3: 1233 (5.4%)
+   Rating 4: 4615 (20.3%)
+   Rating 5: 16057 (70.5%)
 
-6. POTENSI MASALAH:
-   Review < 50 karakter: 617 (12.9%)
-   Nama reviewer hanya alfanumerik: 317
+6. KUALITAS TEKS SETELAH CLEANING:
+   Review kosong: 0 (0.0%)
+   Review < 50 karakter: 4581 (20.1%)
+   Review > 1000 karakter: 231 (1.0%)
+   Nama reviewer kosong: 12 (0.1%)
 
-7. STATISTIK PER WISATA:
-   Alun Alun Kota Wisata Batu:
-     - Total reviews: 672
-     - Avg rating: 4.61
-     - Avg review length: 262 chars
-     - Visit time distribution: {'Tidak diketahui': 672}
-   Batu Night Spectacular:
-     - Total reviews: 288
-     - Avg rating: 4.60
-     - Avg review length: 227 chars
-     - Visit time distribution: {'Hari biasa': 99, 'Akhir pekan': 124, 'Hari libur nasional': 60, 'Tidak diketahui': 5}
-   Coban Talun:
-     - Total reviews: 152
-     - Avg rating: 4.54
-     - Avg review length: 102 chars
-     - Visit time distribution: {'Hari biasa': 40, 'Akhir pekan': 81, 'Hari libur nasional': 28, 'Tidak diketahui': 3}
-   Eco Active Park:
-     - Total reviews: 852
-     - Avg rating: 4.72
-     - Avg review length: 165 chars
-     - Visit time distribution: {'Hari biasa': 328, 'Akhir pekan': 322, 'Hari libur nasional': 149, 'Tidak diketahui': 53}
-   Gunung Panderman:
-     - Total reviews: 206
-     - Avg rating: 4.63
-     - Avg review length: 134 chars
-     - Visit time distribution: {'Tidak diketahui': 206}
-   Jatim Park 1:
-     - Total reviews: 387
-     - Avg rating: 4.69
-     - Avg review length: 205 chars
-     - Visit time distribution: {'Hari biasa': 145, 'Akhir pekan': 162, 'Hari libur nasional': 71, 'Tidak diketahui': 9}
-   Jatim Park 2:
-     - Total reviews: 698
-     - Avg rating: 4.82
-     - Avg review length: 288 chars
-     - Visit time distribution: {'Hari biasa': 262, 'Akhir pekan': 269, 'Hari libur nasional': 157, 'Tidak diketahui': 10}
-   Jatim Park 3:
-     - Total reviews: 222
-     - Avg rating: 4.72
-     - Avg review length: 278 chars
-     - Visit time distribution: {'Hari biasa': 74, 'Akhir pekan': 90, 'Hari libur nasional': 53, 'Tidak diketahui': 5}
-   Museum Angkut:
-     - Total reviews: 1023
-     - Avg rating: 4.80
-     - Avg review length: 169 chars
-     - Visit time distribution: {'Hari biasa': 398, 'Akhir pekan': 382, 'Hari libur nasional': 220, 'Tidak diketahui': 23}
-   Taman Selecta:
-     - Total reviews: 284
-     - Avg rating: 4.82
-     - Avg review length: 225 chars
-     - Visit time distribution: {'Hari biasa': 85, 'Akhir pekan': 126, 'Hari libur nasional': 62, 'Tidak diketahui': 11}
+7. TOP 10 WISATA (BERDASARKAN JUMLAH REVIEW):
+    1. Museum Angkut: 3584 reviews (15.7%) - Avg Rating: 4.80
+    2. Eco Active Park: 3286 reviews (14.4%) - Avg Rating: 4.66
+    3. Air Terjun Coban Rais: 1939 reviews (8.5%) - Avg Rating: 4.09
+    4. Batu Economis Park: 1701 reviews (7.5%) - Avg Rating: 4.48
+    5. Jatim Park 1: 1491 reviews (6.5%) - Avg Rating: 4.65
+    6. Pemandian Air Panas Cangar: 1489 reviews (6.5%) - Avg Rating: 4.25
+    7. Jatim Park 2: 1373 reviews (6.0%) - Avg Rating: 4.80
+    8. Coban Talun: 848 reviews (3.7%) - Avg Rating: 4.49
+    9. Songgoriti Hot Springs: 790 reviews (3.5%) - Avg Rating: 4.28
+   10. Taman Selecta: 750 reviews (3.3%) - Avg Rating: 4.73
+
+8. TOP 10 WISATA (BERDASARKAN RATING TERTINGGI, MIN 10 REVIEWS):
+    1. Wisata Petik Apel Mandiri: 4.81 rating (523 reviews)
+    2. Jatim Park 2: 4.80 rating (1373 reviews)
+    3. Museum Angkut: 4.80 rating (3584 reviews)
+    4. Taman Selecta: 4.73 rating (750 reviews)
+    5. Jatim Park 3: 4.67 rating (439 reviews)
+    6. Eco Active Park: 4.66 rating (3286 reviews)
+    7. Taman Pinus Campervan: 4.65 rating (304 reviews)
+    8. Jatim Park 1: 4.65 rating (1491 reviews)
+    9. Wisata Bunga Sidomulyo: 4.64 rating (33 reviews)
+   10. Batu Love Garden (Baloga): 4.62 rating (293 reviews)
