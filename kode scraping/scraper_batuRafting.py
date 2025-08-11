@@ -347,14 +347,20 @@ def expand_review_safely(driver, element):
         return False
 
 def parse_review_element_with_expand(driver, element):
-    """Parse a single review element with expanding"""
+    """Parse a single review element with expanding - SKIP owner responses, KEEP user reviews"""
     try:
-        if is_owner_response(element):
+        # First check if this is an owner response - if so, skip it completely
+        full_text = safe_get_text(element, "")
+        if not full_text:
+            return None
+        
+        # Skip owner responses completely
+        if any(indicator in full_text.lower() for indicator in ['tanggapan dari pemilik', 'response from the owner', 'balasan dari pemilik']):
             return None
         
         review_data = {}
         
-        # Try to expand the review first
+        # Try to expand the review first (only user reviews)
         expand_review_safely(driver, element)
         time.sleep(0.2)
         
@@ -363,7 +369,8 @@ def parse_review_element_with_expand(driver, element):
         if not full_text:
             return None
         
-        if any(indicator in full_text.lower() for indicator in ['tanggapan dari pemilik', 'response from the owner']):
+        # Double check after expansion - skip if it's an owner response
+        if any(indicator in full_text.lower() for indicator in ['tanggapan dari pemilik', 'response from the owner', 'balasan dari pemilik']):
             return None
         
         lines = full_text.split('\n')
@@ -437,14 +444,15 @@ def parse_review_element_with_expand(driver, element):
         
         review_data['visit_time'] = visit_time
         
-        # Extract review text
+        # Extract review text - stop when we encounter owner response
         review_text = ""
         review_lines = []
         skip_keywords = ['local guide', 'ulasan', 'foto', 'waktu kunjungan', 'suka', 'bagikan', 'lainnya']
         start_collecting = False
         
         for line in lines:
-            if any(keyword in line.lower() for keyword in ['tanggapan dari pemilik', 'response from the owner']):
+            # Stop collecting if we hit an owner response
+            if any(keyword in line.lower() for keyword in ['tanggapan dari pemilik', 'response from the owner', 'balasan dari pemilik']):
                 break
             
             if rating > 0 and date and not start_collecting:
@@ -476,11 +484,11 @@ def create_output_folder():
         print(f"Created folder: {folder_path}")
     return folder_path
 
-def scrape_baturafting():
-    """Main scraping function for Baturafting with improved scrolling"""
+def scrape_batu_rafting():
+    """Main scraping function for Batu Rafting with improved scrolling"""
     
-    # URL untuk Baturafting
-    url = "https://www.google.com/maps/place/baturafting/@-7.8641138,112.5294331,17z/data=!4m8!3m7!1s0x2e7880c0a88dc5fb:0x9dad0f384952abe5!8m2!3d-7.8641138!4d112.5342987!9m1!1b1!16s%2Fg%2F1ptyhmrr9?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D"
+    # URL untuk Batu Rafting yang baru
+    url = "https://www.google.com/maps/place/Batu+Rafting/@-7.8920678,112.529986,17z/data=!3m1!4b1!4m6!3m5!1s0x2e7880ce73f7491b:0x1f26c0b1a9add0de!8m2!3d-7.8920678!4d112.5325663!16s%2Fg%2F11c56r1dph?entry=ttu&g_ep=EgoyMDI1MDgwNi4wIKXMDSoASAFQAw%3D%3D"
     
     print("Setting up Firefox driver...")
     driver = None
@@ -494,7 +502,7 @@ def scrape_baturafting():
         processed_reviews = set()
         target_reviews = 2000
         
-        print("Opening Baturafting page...")
+        print("Opening Batu Rafting page...")
         driver.get(url)
         time.sleep(5)
         
@@ -523,7 +531,7 @@ def scrape_baturafting():
             return
         
         # Start collecting reviews
-        print(f"Starting to collect reviews (with improved scrolling)...")
+        print(f"Starting to collect reviews (skipping owner responses)...")
         scroll_count = 0
         consecutive_no_new = 0
         max_consecutive_no_new = 10  # Reduced from 20 for more aggressive scrolling
@@ -562,7 +570,7 @@ def scrape_baturafting():
                         
                         processed_reviews.add(review_id)
                         
-                        # Parse review with expansion
+                        # Parse review with expansion (will skip owner responses automatically)
                         review_data = parse_review_element_with_expand(driver, element)
                         
                         if review_data:
@@ -570,7 +578,7 @@ def scrape_baturafting():
                             new_reviews_count += 1
                             
                             if len(all_reviews) % 10 == 0:
-                                print(f"Collected {len(all_reviews)} reviews")
+                                print(f"Collected {len(all_reviews)} user reviews (owner responses skipped)")
                     
                     except Exception as e:
                         continue
@@ -610,9 +618,9 @@ def scrape_baturafting():
                 aggressive_scroll_and_wait(driver, scrollable_div)
                 continue
         
-        # Save final results
+        # Save final results - ONLY CSV
         print(f"\nCompleted scraping!")
-        print(f"Total reviews collected: {len(all_reviews)}")
+        print(f"Total user reviews collected: {len(all_reviews)}")
         
         if all_reviews:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -621,14 +629,10 @@ def scrape_baturafting():
             column_order = ['reviewer_name', 'rating', 'date', 'visit_time', 'review_text']
             df = df.reindex(columns=column_order)
             
-            csv_filename = os.path.join(output_folder, f'baturafting_reviews_{timestamp}.csv')
+            # Only save CSV file
+            csv_filename = os.path.join(output_folder, f'batu_rafting_reviews_{timestamp}.csv')
             df.to_csv(csv_filename, index=False, encoding='utf-8-sig')
             print(f"Data saved to {csv_filename}")
-            
-            json_filename = os.path.join(output_folder, f'baturafting_reviews_{timestamp}.json')
-            with open(json_filename, 'w', encoding='utf-8') as f:
-                json.dump(all_reviews, f, ensure_ascii=False, indent=2)
-            print(f"JSON data saved to {json_filename}")
             
             # Print summary statistics
             if 'rating' in df.columns:
@@ -656,12 +660,12 @@ def scrape_baturafting():
                 pass
 
 if __name__ == "__main__":
-    print("=== BATURAFTING REVIEW SCRAPER (ALL REVIEWS) ===")
-    print("Target: 2000 reviews (visit_time not required)")
+    print("=== BATU RAFTING REVIEW SCRAPER (USER REVIEWS ONLY) ===")
+    print("Target: 2000 user reviews (owner responses will be skipped)")
     print("Features: Aggressive scrolling, Text expansion enabled, Sort by 'Paling relevan'")
-    print("Output folder: hasil scraping")
-    print("Note: Will collect ALL reviews regardless of visit_time presence\n")
+    print("Output: CSV file only in 'hasil scraping' folder")
+    print("Note: Will collect user reviews and skip owner responses completely\n")
     
-    scrape_baturafting()
+    scrape_batu_rafting()
     
     print("\nScraping completed!")

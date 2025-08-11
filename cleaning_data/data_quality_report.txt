@@ -1,68 +1,535 @@
-============================================================
+================================================================================
 LAPORAN KUALITAS DATA - BATU TOURISM REVIEWS
-============================================================
-Generated on: 2025-08-07 20:28:58
-Total reviews: 22784
-Total wisata: 28
+================================================================================
+Generated on: 2025-08-11 11:39:26
+Total reviews: 31,843
+Total wisata: 30
+✓ KONFIRMASI: Total wisata = 30 wisata (sesuai target)
 
-1. KELENGKAPAN DATA:
+================================================================================
+DETAIL PROSES CLEANING PER WISATA
+================================================================================
+CATATAN: SEMUA REVIEW DIPERTAHANKAN - TIDAK ADA FILTER PANJANG MINIMUM
+
+RINGKASAN PROSES CLEANING:
+✓ Wisata berhasil di-cleaning: 30
+✗ Wisata gagal di-cleaning: 0
+✓ Total file CSV diproses: 34
+✓ Total rows awal: 31,847
+✓ Total rows akhir: 31,843
+✓ Total retention rate: 100.0%
+✓ Reviews dengan Google Translate markers dibersihkan: 992
+✓ Nama reviewer dibersihkan: 0
+✓ Duplikat dihapus: 3
+✓ Review kosong: 8,191
+✓ Review sangat pendek (≤5 char): 8,281
+✓ Review pendek/kosong dihapus: 0 (SEMUA DIPERTAHANKAN)
+
+DETAIL PER WISATA:
+--------------------------------------------------------------------------------
+
+ 1. Air Terjun Coban Rais
+    Status: SUCCESS (MERGED)
+    File(s): 2 file(s) berhasil dimuat
+      - air_terjun_coban_rais_ALL_reviews_20250802_102141.csv (3358 rows)
+      - coban_rais_reviews_20250804_223751.csv (25 rows)
+    Rows awal (gabungan): 3,383
+    Setelah dedup gabungan: 3,383
+    Duplikat saat gabung: 0
+    Rows akhir: 3,383
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 374, Review kosong: 1437, Review ≤5 char: 1437
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+ 2. Alun Alun Kota Wisata Batu
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - alun_alun_kota_wisata_batu_reviews_20250725_105504.csv (759 rows)
+    Rows awal: 759
+    Rows akhir: 759
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, review_text
+    Cleaning: Review ≤5 char: 79
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+ 3. Batu Economis Park
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - batu_economis_park_ALL_reviews_20250802_172842.csv (1892 rows)
+    Rows awal: 1,892
+    Rows akhir: 1,892
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 190, Review ≤5 char: 190
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+ 4. Batu Love Garden (Baloga)
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - batu_love_garden_baloga_ALL_reviews_20250802_181709.csv (403 rows)
+    Rows awal: 403
+    Rows akhir: 403
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 110, Review ≤5 char: 110
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+ 5. Batu Night Spectacular
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - batu_night_spectacular_ALL_reviews_20250724_154759.csv (631 rows)
+    Rows awal: 631
+    Rows akhir: 631
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 83, Review ≤5 char: 83
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+ 6. Batu Rafting
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - batu_rafting_reviews_20250810_224610.csv (383 rows)
+    Rows awal: 383
+    Rows akhir: 383
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 32, Review kosong: 242, Review ≤5 char: 242
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+ 7. Coban Putri
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - coban_putri_reviews_all_20250803_001704.csv (323 rows)
+    Rows awal: 323
+    Rows akhir: 323
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 11, Review kosong: 161, Review ≤5 char: 161
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+ 8. Coban Talun
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - coban_talun_ALL_reviews_20250724_114716.csv (1442 rows)
+    Rows awal: 1,442
+    Rows akhir: 1,442
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 143, Review kosong: 592, Review ≤5 char: 592
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+ 9. Desa Wisata Punten
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - desa_wisata_punten_reviews_20250810_230050.csv (4 rows)
+    Rows awal: 4
+    Rows akhir: 4
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, review_text
+    Cleaning: Review kosong: 4, Review ≤5 char: 4
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+10. Desa Wisata Tulungrejo
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - desa_wisata_tulungrejo_reviews_20250802_013319.csv (4 rows)
+    Rows awal: 4
+    Rows akhir: 4
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 1, Review ≤5 char: 1
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+11. Eco Active Park
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - eco_active_park_ALL_reviews_20250725_002543.csv (3660 rows)
+    Rows awal: 3,660
+    Rows akhir: 3,660
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 374, Review ≤5 char: 374
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+12. Gunung Arjuno
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - gunung_arjuno_reviews_20250804_180540.csv (619 rows)
+    Rows awal: 619
+    Rows akhir: 619
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, review_text
+    Cleaning: Google Translate: 54, Review kosong: 258, Review ≤5 char: 258
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+13. Gunung Panderman
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - gunung_panderman_reviews_20250724_141423.csv (364 rows)
+    Rows awal: 364
+    Rows akhir: 364
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, review_text
+    Cleaning: Google Translate: 26, Review kosong: 141, Review ≤5 char: 152
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+14. Gussari Goa Pinus Batu
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - gussari_goa_pinus_batu_ALL_reviews_20250811_021707.csv (1810 rows)
+    Rows awal: 1,810
+    Rows akhir: 1,809
+    Retention rate: 99.9%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 141, Duplikat: 1, Review kosong: 1218, Review ≤5 char: 1218
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+15. Jatim Park 1
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - jatim_park_1_ALL_reviews_20250723_140636.csv (1613 rows)
+    Rows awal: 1,613
+    Rows akhir: 1,613
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 122, Review ≤5 char: 122
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+16. Jatim Park 2
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - jatim_park_2_ALL_reviews_20250725_114708.csv (1562 rows)
+    Rows awal: 1,562
+    Rows akhir: 1,562
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 189, Review ≤5 char: 189
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+17. Jatim Park 3
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - jatim_park_3_ALL_reviews_20250725_011845.csv (525 rows)
+    Rows awal: 525
+    Rows akhir: 525
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 86, Review ≤5 char: 86
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+18. Lumbung Stroberi
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - lumbung_stroberi_ALL_reviews_20250804_160259.csv (549 rows)
+    Rows awal: 549
+    Rows akhir: 549
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 19, Review kosong: 250, Review ≤5 char: 250
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+19. Milenial Glow Garden
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - milenial_glow_garden_ALL_reviews_20250802_201820.csv (932 rows)
+    Rows awal: 932
+    Rows akhir: 932
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 240, Review ≤5 char: 240
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+20. Museum Angkut
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - museum_angkut_ALL_reviews_20250725_160008.csv (4686 rows)
+    Rows awal: 4,686
+    Rows akhir: 4,685
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Duplikat: 1, Review kosong: 1101, Review ≤5 char: 1101
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+21. Paralayang Gunung Banyak
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - paralayang_gunung_banyak_reviews_20250802_235154.csv (100 rows)
+    Rows awal: 100
+    Rows akhir: 100
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 7, Review kosong: 48, Review ≤5 char: 48
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+22. Pemandian Air Panas Cangar
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - pemandian_air_panas_cangar_ALL_reviews_20250802_230623.csv (1559 rows)
+    Rows awal: 1,559
+    Rows akhir: 1,559
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 70, Review ≤5 char: 70
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+23. Songgoriti Hot Springs
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - songgoriti_hot_springs_all_reviews_20250804_192319.csv (997 rows)
+    Rows awal: 997
+    Rows akhir: 997
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 87, Review kosong: 196, Review ≤5 char: 196
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+24. Taman Dolan
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - taman_dolan_ALL_reviews_20250804_174157.csv (608 rows)
+    Rows awal: 608
+    Rows akhir: 608
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 38, Review ≤5 char: 38
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+25. Taman Pinus Campervan
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - taman_pinus_campervan_ALL_reviews_20250804_160757.csv (540 rows)
+    Rows awal: 540
+    Rows akhir: 539
+    Retention rate: 99.8%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 17, Duplikat: 1, Review kosong: 235, Review ≤5 char: 235
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+26. Taman Selecta
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - taman_selecta_ALL_reviews_20250724_085149.csv (900 rows)
+    Rows awal: 900
+    Rows akhir: 900
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Review kosong: 150, Review ≤5 char: 150
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+27. Tirta Nirwana Hotspring
+    Status: SUCCESS (MERGED)
+    File(s): 2 file(s) berhasil dimuat
+      - tirta_nirwana_songgoriti_all_reviews_20250803_011926.csv (10 rows)
+      - tirta_nirwana_songgoriti_all_reviews_newest_20250804_213237.csv (612 rows)
+    Rows awal (gabungan): 622
+    Setelah dedup gabungan: 621
+    Duplikat saat gabung: 1
+    Rows akhir: 621
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 36, Review kosong: 282, Review ≤5 char: 282
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+28. Wisata Bunga Sidomulyo
+    Status: SUCCESS (MERGED)
+    File(s): 3 file(s) berhasil dimuat
+      - wisata_bunga_sidomulyo_reviews_20250802_174108.csv (66 rows)
+      - wisata_bunga_sidomulyo_reviews_20250803_012801.csv (15 rows)
+      - rest_area_desa_wisata_sidomulyo_reviews_20250802_174921.csv (3 rows)
+    Rows awal (gabungan): 84
+    Setelah dedup gabungan: 84
+    Duplikat saat gabung: 0
+    Rows akhir: 84
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 3, Review kosong: 47, Review ≤5 char: 47
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+29. Wisata Desa Agro Bumiaji
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - wisata_desa_agro_bumiaji_reviews_20250804_150849.csv (142 rows)
+    Rows awal: 142
+    Rows akhir: 142
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, visit_time, review_text
+    Cleaning: Google Translate: 5, Review kosong: 100, Review ≤5 char: 100
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+30. Wisata Petik Apel Mandiri
+    Status: SUCCESS
+    File(s): 1 file(s) berhasil dimuat
+      - wisata_petik_apel_mandiri_reviews_20250804_181035.csv (751 rows)
+    Rows awal: 751
+    Rows akhir: 751
+    Retention rate: 100.0%
+    Kolom: reviewer_name, rating, date, review_text
+    Cleaning: Google Translate: 37, Review kosong: 226, Review ≤5 char: 226
+    ✓ SEMUA REVIEW DIPERTAHANKAN
+
+================================================================================
+DAFTAR WISATA DALAM DATASET FINAL
+================================================================================
+ 1. Air Terjun Coban Rais
+    Reviews: 3,383 (10.6%)
+    Avg Rating: 4.14
+ 2. Alun Alun Kota Wisata Batu
+    Reviews: 759 (2.4%)
+    Avg Rating: 4.62
+ 3. Batu Economis Park
+    Reviews: 1,892 (5.9%)
+    Avg Rating: 4.49
+ 4. Batu Love Garden (Baloga)
+    Reviews: 403 (1.3%)
+    Avg Rating: 4.66
+ 5. Batu Night Spectacular
+    Reviews: 631 (2.0%)
+    Avg Rating: 4.56
+ 6. Batu Rafting
+    Reviews: 383 (1.2%)
+    Avg Rating: 4.37
+ 7. Coban Putri
+    Reviews: 323 (1.0%)
+    Avg Rating: 4.61
+ 8. Coban Talun
+    Reviews: 1,442 (4.5%)
+    Avg Rating: 4.54
+ 9. Desa Wisata Punten
+    Reviews: 4 (0.0%)
+    Avg Rating: 5.00
+10. Desa Wisata Tulungrejo
+    Reviews: 4 (0.0%)
+    Avg Rating: 5.00
+11. Eco Active Park
+    Reviews: 3,660 (11.5%)
+    Avg Rating: 4.65
+12. Gunung Arjuno
+    Reviews: 619 (1.9%)
+    Avg Rating: 4.55
+13. Gunung Panderman
+    Reviews: 364 (1.1%)
+    Avg Rating: 4.59
+14. Gussari Goa Pinus Batu
+    Reviews: 1,809 (5.7%)
+    Avg Rating: 4.28
+15. Jatim Park 1
+    Reviews: 1,613 (5.1%)
+    Avg Rating: 4.66
+16. Jatim Park 2
+    Reviews: 1,562 (4.9%)
+    Avg Rating: 4.80
+17. Jatim Park 3
+    Reviews: 525 (1.6%)
+    Avg Rating: 4.67
+18. Lumbung Stroberi
+    Reviews: 549 (1.7%)
+    Avg Rating: 4.42
+19. Milenial Glow Garden
+    Reviews: 932 (2.9%)
+    Avg Rating: 4.58
+20. Museum Angkut
+    Reviews: 4,685 (14.7%)
+    Avg Rating: 4.80
+21. Paralayang Gunung Banyak
+    Reviews: 100 (0.3%)
+    Avg Rating: 4.32
+22. Pemandian Air Panas Cangar
+    Reviews: 1,559 (4.9%)
+    Avg Rating: 4.26
+23. Songgoriti Hot Springs
+    Reviews: 997 (3.1%)
+    Avg Rating: 4.34
+24. Taman Dolan
+    Reviews: 608 (1.9%)
+    Avg Rating: 4.12
+25. Taman Pinus Campervan
+    Reviews: 539 (1.7%)
+    Avg Rating: 4.63
+26. Taman Selecta
+    Reviews: 900 (2.8%)
+    Avg Rating: 4.72
+27. Tirta Nirwana Hotspring
+    Reviews: 621 (2.0%)
+    Avg Rating: 4.33
+28. Wisata Bunga Sidomulyo
+    Reviews: 84 (0.3%)
+    Avg Rating: 4.57
+29. Wisata Desa Agro Bumiaji
+    Reviews: 142 (0.4%)
+    Avg Rating: 4.35
+30. Wisata Petik Apel Mandiri
+    Reviews: 751 (2.4%)
+    Avg Rating: 4.73
+
+================================================================================
+1. KELENGKAPAN DATA
+================================================================================
    reviewer_name: 99.9% lengkap
    rating: 100.0% lengkap
    date: 100.0% lengkap
    visit_time: 100.0% lengkap
-   review_text: 100.0% lengkap
+   review_text: 74.3% lengkap
    wisata: 100.0% lengkap
 
-2. KONSISTENSI DATA:
+2. KONSISTENSI DATA
+----------------------------------------
    Rating dalam range 1-5: True
    Nilai unik visit_time: 4
    Kategori visit_time: ['Akhir pekan', 'Hari biasa', 'Hari libur nasional', 'Tidak diketahui']
 
-3. DISTRIBUSI DATA:
-   Rata-rata panjang review: 176 karakter
-   Review terpendek: 11 karakter
+3. DISTRIBUSI DATA
+----------------------------------------
+   Rata-rata panjang review: 128 karakter
+   Review terpendek: 0 karakter
    Review terpanjang: 3242 karakter
-   Rata-rata rating keseluruhan: 4.55
+   Rata-rata rating keseluruhan: 4.53
 
-4. DISTRIBUSI WAKTU KUNJUNGAN:
-   'Hari biasa': 2120 (9.3%)
-   'Akhir pekan': 2505 (11.0%)
-   'Hari libur nasional': 1125 (4.9%)
-   'Tidak diketahui': 17034 (74.8%)
+4. DISTRIBUSI WAKTU KUNJUNGAN
+----------------------------------------
+   'Hari biasa': 2,529 (7.9%)
+   'Akhir pekan': 3,132 (9.8%)
+   'Hari libur nasional': 1,339 (4.2%)
+   'Tidak diketahui': 24,843 (78.0%)
 
-5. DISTRIBUSI RATING:
-   Rating 1: 524 (2.3%)
-   Rating 2: 355 (1.6%)
-   Rating 3: 1233 (5.4%)
-   Rating 4: 4615 (20.3%)
-   Rating 5: 16057 (70.5%)
+5. DISTRIBUSI RATING
+----------------------------------------
+   Rating 1: 774 (2.4%)
+   Rating 2: 524 (1.6%)
+   Rating 3: 1,867 (5.9%)
+   Rating 4: 6,512 (20.5%)
+   Rating 5: 22,166 (69.6%)
 
-6. KUALITAS TEKS SETELAH CLEANING:
-   Review kosong: 0 (0.0%)
-   Review < 50 karakter: 4581 (20.1%)
-   Review > 1000 karakter: 231 (1.0%)
-   Nama reviewer kosong: 12 (0.1%)
+6. KUALITAS TEKS SETELAH CLEANING
+----------------------------------------
+   Review kosong: 8,191 (25.7%)
+   Review ≤ 5 karakter: 8,281 (26.0%)
+   Review < 50 karakter: 13,329 (41.9%)
+   Review > 1000 karakter: 231 (0.7%)
+   Nama reviewer kosong: 20 (0.1%)
 
-7. TOP 10 WISATA (BERDASARKAN JUMLAH REVIEW):
-    1. Museum Angkut: 3584 reviews (15.7%) - Avg Rating: 4.80
-    2. Eco Active Park: 3286 reviews (14.4%) - Avg Rating: 4.66
-    3. Air Terjun Coban Rais: 1939 reviews (8.5%) - Avg Rating: 4.09
-    4. Batu Economis Park: 1701 reviews (7.5%) - Avg Rating: 4.48
-    5. Jatim Park 1: 1491 reviews (6.5%) - Avg Rating: 4.65
-    6. Pemandian Air Panas Cangar: 1489 reviews (6.5%) - Avg Rating: 4.25
-    7. Jatim Park 2: 1373 reviews (6.0%) - Avg Rating: 4.80
-    8. Coban Talun: 848 reviews (3.7%) - Avg Rating: 4.49
-    9. Songgoriti Hot Springs: 790 reviews (3.5%) - Avg Rating: 4.28
-   10. Taman Selecta: 750 reviews (3.3%) - Avg Rating: 4.73
+7. TOP 10 WISATA (BERDASARKAN JUMLAH REVIEW)
+----------------------------------------
+    1. Museum Angkut: 4,685 reviews (14.7%) - Avg Rating: 4.80
+    2. Eco Active Park: 3,660 reviews (11.5%) - Avg Rating: 4.65
+    3. Air Terjun Coban Rais: 3,383 reviews (10.6%) - Avg Rating: 4.14
+    4. Batu Economis Park: 1,892 reviews (5.9%) - Avg Rating: 4.49
+    5. Gussari Goa Pinus Batu: 1,809 reviews (5.7%) - Avg Rating: 4.28
+    6. Jatim Park 1: 1,613 reviews (5.1%) - Avg Rating: 4.66
+    7. Jatim Park 2: 1,562 reviews (4.9%) - Avg Rating: 4.80
+    8. Pemandian Air Panas Cangar: 1,559 reviews (4.9%) - Avg Rating: 4.26
+    9. Coban Talun: 1,442 reviews (4.5%) - Avg Rating: 4.54
+   10. Songgoriti Hot Springs: 997 reviews (3.1%) - Avg Rating: 4.34
 
-8. TOP 10 WISATA (BERDASARKAN RATING TERTINGGI, MIN 10 REVIEWS):
-    1. Wisata Petik Apel Mandiri: 4.81 rating (523 reviews)
-    2. Jatim Park 2: 4.80 rating (1373 reviews)
-    3. Museum Angkut: 4.80 rating (3584 reviews)
-    4. Taman Selecta: 4.73 rating (750 reviews)
-    5. Jatim Park 3: 4.67 rating (439 reviews)
-    6. Eco Active Park: 4.66 rating (3286 reviews)
-    7. Taman Pinus Campervan: 4.65 rating (304 reviews)
-    8. Jatim Park 1: 4.65 rating (1491 reviews)
-    9. Wisata Bunga Sidomulyo: 4.64 rating (33 reviews)
-   10. Batu Love Garden (Baloga): 4.62 rating (293 reviews)
+8. TOP 10 WISATA (BERDASARKAN RATING TERTINGGI, MIN 10 REVIEWS)
+----------------------------------------
+    1. Jatim Park 2: 4.80 rating (1562 reviews)
+    2. Museum Angkut: 4.80 rating (4685 reviews)
+    3. Wisata Petik Apel Mandiri: 4.73 rating (751 reviews)
+    4. Taman Selecta: 4.72 rating (900 reviews)
+    5. Jatim Park 3: 4.67 rating (525 reviews)
+    6. Jatim Park 1: 4.66 rating (1613 reviews)
+    7. Batu Love Garden (Baloga): 4.66 rating (403 reviews)
+    8. Eco Active Park: 4.65 rating (3660 reviews)
+    9. Taman Pinus Campervan: 4.63 rating (539 reviews)
+   10. Alun Alun Kota Wisata Batu: 4.62 rating (759 reviews)

@@ -1,0 +1,877 @@
+[
+  {
+    "reviewer_name": "Leo van Galen",
+    "rating": 4,
+    "date": "sebulan lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Zhy Rex",
+    "rating": 1,
+    "date": "2 bulan lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Yusuf Efendi",
+    "rating": 1,
+    "date": "2 bulan lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Hussein Abdullah",
+    "rating": 5,
+    "date": "4 bulan lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Farandi Anggono",
+    "rating": 4,
+    "date": "4 bulan lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Pemandangannya sendiri bagus tapi tempatnya sudah sepi, tidak ada perawatan apa pun pada fasilitas di dalamnya, kafenya sudah tutup untuk selamanya"
+  },
+  {
+    "reviewer_name": "dwia prass",
+    "rating": 5,
+    "date": "6 bulan lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "Pernah kesini pas cuaca mendung dan kita kehujanan bikin suasana jadi syahdu. Dingin2 berkabut enak buat ngopi disini."
+  },
+  {
+    "reviewer_name": "Paula Anindia",
+    "rating": 3,
+    "date": "6 bulan lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Hal yang sangat disayangkan dari tempat sebagus ini adalah tidak dikelola dengan baik, pemandangannya sangat sangat indah, akses menuju goa pinus jg mudah ga susah nyarinya via google map, krn tidak dirawat, banyak nyamuk dan terbengkalai, sedih banget padahal viewnya cantik dan hawanya sangat sejuk"
+  },
+  {
+    "reviewer_name": "alphie chan",
+    "rating": 5,
+    "date": "8 bulan lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Lokasinya dekat dengan paralayang.. lereng gunung Banyak.. jalanan cukup menanjak, tp tidak terlalu ekstrim.. pemandangan bagus."
+  },
+  {
+    "reviewer_name": "Hadi Rubianto",
+    "rating": 5,
+    "date": "8 bulan lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Tempatnya enak dan nyaman, tenang tidak berisik dari bising kendaraan"
+  },
+  {
+    "reviewer_name": "lauren glou",
+    "rating": 1,
+    "date": "10 bulan lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "kecewa bgt jir"
+  },
+  {
+    "reviewer_name": "muhammad fattah",
+    "rating": 3,
+    "date": "10 bulan lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "kurang terawat"
+  },
+  {
+    "reviewer_name": "Arif Rahman Hakim james",
+    "rating": 5,
+    "date": "10 bulan lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Andre Setiawan",
+    "rating": 1,
+    "date": "11 bulan lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "tidak terawat"
+  },
+  {
+    "reviewer_name": "Aster Mocca",
+    "rating": 1,
+    "date": "11 bulan lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "Tempatnya terbengkalai, bahkan banyak tempat duduk yang sudah berlumut."
+  },
+  {
+    "reviewer_name": "Rismauliya Melati Surya",
+    "rating": 3,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "bersih, bisa lihat pemandangan, tapi seperti sudah jarang dikunjungi, masuk bayar parkir dan tiket, jika masuk ke goa harus beli tiket lagi."
+  },
+  {
+    "reviewer_name": "Arjenega Damanike",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": "tempatnya enak buat ngelamun gitu, dan hawanya juga enak dingin"
+  },
+  {
+    "reviewer_name": "Said Abdullah",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "wisata disamping paralayang kota batu, untuk melihat keindahan desa dibawah sangat worth it sekali, tapi disini sangat sepi dibandingkan paralayang itu sendiri. tempatnya ga begitu luas, dan ada goa memang cuman seperti goa buatan yang pendek tidak sedalam itu"
+  },
+  {
+    "reviewer_name": "Feerenza",
+    "rating": 1,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Mending ke wisata2 lain harga masuk lebih murah, fasilitas nya lebih bagus, pemandangan juga lebih bagus."
+  },
+  {
+    "reviewer_name": "Ghias Gie",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Self healing.. spotnya bagus bagus tapi ada beberapa spot dikenakan biaya lg tapi ga mahal ko cuma 10rbu.. recommend"
+  },
+  {
+    "reviewer_name": "Astrid Wira Yudha",
+    "rating": 4,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "Sepertinya kurang perawatan sekarang ya dan untuk keamanan tempat swa photo juga minim"
+  },
+  {
+    "reviewer_name": "Aisyah arfayanti",
+    "rating": 4,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Tempatnya sepi, udh keliatan ga kerawat tapi masih worth it buat dikunjungi"
+  },
+  {
+    "reviewer_name": "Anas Bahfi",
+    "rating": 3,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Andy Wijaya",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "OKTAFIA NURAZIZAH",
+    "rating": 3,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "mochammad syaifuddin",
+    "rating": 1,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "Tempat tidak terawat, harus bayar loket 2x"
+  },
+  {
+    "reviewer_name": "Khansa Maritza",
+    "rating": 4,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Ellzio",
+    "rating": 4,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "c",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "ulfa risma",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": "Cukup untuk menikmati Batu dari sisi atas"
+  },
+  {
+    "reviewer_name": "Mister Ardy",
+    "rating": 1,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Maaf, harus review jujur. tempatnya sepi, sepertinya lama tidak dirawat. tiket masuk 10r, didalam bayar lagi 10rb."
+  },
+  {
+    "reviewer_name": "BAMBU RANCAK",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Lova Ocha",
+    "rating": 4,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Indra Goenawan",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Ridwan Purnomo",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Aulia Aisya Cahyarani",
+    "rating": 3,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "medannya ga seberapa nanjak, jalan menuju lokasi juga ga seberapa rusak, bisa dilalui mobil, motor matic juga bisa kesini. semoga kedepannya bayar pintu masuknya sekali aja ya mas/mba, baru saya kasih bintang 5."
+  },
+  {
+    "reviewer_name": "Muthi Sarwiyata",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Azman Rusli",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Ariel thetravellers",
+    "rating": 3,
+    "date": "setahun lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Felita Gutana",
+    "rating": 3,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "super kecil kyk kamar kost an, gtau apa yg dilihat buat jd tempat wisata 😅"
+  },
+  {
+    "reviewer_name": "Citra",
+    "rating": 5,
+    "date": "setahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Tempat healing yang sangat estetik. Awas jangan salah jalan, jika mengikuti GMaps bisa dilewatkan jalan kecil dan terjal serta tanjakan sangat curam. Lokasi bersebelahan dengan wisata Paralayang."
+  },
+  {
+    "reviewer_name": "Nikmatul Azizah",
+    "rating": 4,
+    "date": "setahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "Tempatnya bagus, pemandangannya dapet juga. Cuman udah mulai engga terawat, ada spot yg udah rusak dan belum diperbaiki lagi. Buat biaya masuk per motor aku kemarin 25k per motor, terus pas mau masuk yg lebih ke dalam buat dapet spot yg lebih bagus bayar lagi 10k per orang. Mau bilang mahal tapi lumayan worth it sama pemandangannya. Tapi kalo dibilang murah juga enggak menurutku karena banyak tempat wisata lain yg lebih murah. Selebihnya it's okay ke sini untuk refreshing melepas penat✨"
+  },
+  {
+    "reviewer_name": "ahmad tumroni",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "infar marley",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Yunita Setyowati",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Dito",
+    "rating": 4,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Nur Affiq",
+    "rating": 4,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Alenn 1922",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "BAGUS KANNN"
+  },
+  {
+    "reviewer_name": "fredy kurniadi",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "ucupjune",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Tempat wisata alam yg cukup menyegarkan mata"
+  },
+  {
+    "reviewer_name": "Ongko Shiuan",
+    "rating": 3,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Septimia Ambarwati",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Afa Royyy",
+    "rating": 1,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Nizli Grace",
+    "rating": 1,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "Jelek ga wort it bngt bayar 2 kali per orang tempat tidak terawat"
+  },
+  {
+    "reviewer_name": "Aldwin Nouvalrifqi",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Tulisannya buka jam 8, pas kemarin kesana gak ada yang jaga loket haha. Have a nice hidden spot for photo, lokasi dekat / di bawah paralayang. Akses bisa pakai mobil dan motor, depan loket ada parkiran kecil, pas dateng ga ramee jadi cuma 2 motor aja"
+  },
+  {
+    "reviewer_name": "Desy Evelyn",
+    "rating": 3,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Lina_ Gunawan 88",
+    "rating": 2,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "dilla khff",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Theresia Wiwin",
+    "rating": 4,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Roy Sulahyar",
+    "rating": 4,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Maaf tanya,apa bisa masuk/lewat pakek mobil ya?"
+  },
+  {
+    "reviewer_name": "Hafiz Furqoni Wisam Azizi",
+    "rating": 3,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Tiar Tiara",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Serius view di sini bener² apik banget. Cocok banget buat refreshing biar ga jenuh sama pekerjaan atau hal² yang mengganggu pikiran. Cuma sayangnya skrng di Goa Pinus kurang terawat tempatnyaa"
+  },
+  {
+    "reviewer_name": "Rischa Novian",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Baru datang dilokasi sudah disuguhi oleh pemandangan alam yang cantik... udara di sini juga sangat sejuk, cocok sekali untuk refreshing melepas penat. Tiket masuk juga sangat terjangkau, ada tempat untuk parkir. Daerah Batu, jawatimur 👍🏼"
+  },
+  {
+    "reviewer_name": "Nanayu Mokoagow",
+    "rating": 4,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": "Gak seindah dulu ,kayu udah pada rapuh"
+  },
+  {
+    "reviewer_name": "Alil Santoso",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "Tempatnya bagus,kebetulan ksni pas Cerah. Cuma sayangnya per spot fto harus bayar"
+  },
+  {
+    "reviewer_name": "Grishelda Safa Kamila",
+    "rating": 1,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Niken Maharani",
+    "rating": 4,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Cak Man",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": "Tempat merenung & indah"
+  },
+  {
+    "reviewer_name": "My Body My Choice",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "keren banyak pohon pinus masuk sini cuman 10rb, mungkin map nya kurang akurat ya tapi ya deket deket situ tapi worth the price kok"
+  },
+  {
+    "reviewer_name": "Gilang Indra K.",
+    "rating": 3,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Pira Santoso",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": "Pemandangan indah dan sejuk"
+  },
+  {
+    "reviewer_name": "Zenal Muttakin",
+    "rating": 2,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "Sepi pengunjung dan kurang terawat"
+  },
+  {
+    "reviewer_name": "Machmud Herry setyawan",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Rini Wulandari",
+    "rating": 3,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "Banyak properti yang ngga kerawat seperti balonnya, terus banyak lumut😄 sayang bgt"
+  },
+  {
+    "reviewer_name": "Moh Zainal Alim",
+    "rating": 1,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Wisata kayak kuburan nih"
+  },
+  {
+    "reviewer_name": "Rommy Sutanto",
+    "rating": 1,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Rugi masuk disini.Ga ada spot menarik karena pada rusak."
+  },
+  {
+    "reviewer_name": "Brian Kusuma Putra",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Fajar Argo Wibowo",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Bungsu Tri Wahyono",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Bagus banget"
+  },
+  {
+    "reviewer_name": "Dar Mini",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "Gut place for narsis"
+  },
+  {
+    "reviewer_name": "Rohmatus Solihah",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Arahman Arahman",
+    "rating": 5,
+    "date": "2 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "B A W A",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Muhammad mikail ar roikhan",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Nadya Zubair",
+    "rating": 4,
+    "date": "3 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Maha Nanta",
+    "rating": 4,
+    "date": "3 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "Selain wisata paralayang wisata 'Goa Pinus' ini, wajib nih untuk di kunjungi toh ya sejalur kok jalannya. Dengan harga tiket Rp 10.000 per orang dan parkir motor Rp 5.000 anda sudah dapat menikmati pemandangan alam yang begitu indah dari atas bukit. Untuk tempatnya si lumayan sepi jadi enak gitu ga terlalu ramai dan tenang rasanya. Goanya biasa aja kok, kecil, ga ada unsur mistis-mistisnya wkwkwk. Masalah sinyal agak susah yh disini karna di atas bukit mungkin saran bisa pakai telkoms*l aja."
+  },
+  {
+    "reviewer_name": "Putu Gede D.P.",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Novy Irawatie",
+    "rating": 4,
+    "date": "3 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Budhi Harjo Sanyoto",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Tempat yang wajib dikunjungi saat menikmati liburan Anda"
+  },
+  {
+    "reviewer_name": "wempy",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Berjalan-jalan dan nikmati alam"
+  },
+  {
+    "reviewer_name": "Ha and Ris",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": "🏕Tempat paling cocok buat holiday akhir pekan 🌲Pemandangan pohon pinus yang memanjakan mata ✅REKOMENDED"
+  },
+  {
+    "reviewer_name": "Astuty Meina",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Astuty Meina",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Desy Indraw",
+    "rating": 4,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Sejuk bgt udara nya buat cari angin... Pengelola ramah."
+  },
+  {
+    "reviewer_name": "Ok Fendrik dwi pamungkas",
+    "rating": 4,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": "Suasana nyaman asri adem.. masih alami banget.. tolong untuk kebersihan di maximalkan.."
+  },
+  {
+    "reviewer_name": "Denias M",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Aurani Savitri",
+    "rating": 4,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "abidin “juan” zainal",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Any Eka Rahmawati",
+    "rating": 3,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Syakirah Rizky Aurelya Putri",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Muhammad Ghazi Al Jazary",
+    "rating": 4,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Nandyasari H.P",
+    "rating": 4,
+    "date": "3 tahun lalu",
+    "visit_time": "Hari biasa",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Cherry",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Hari libur nasional",
+    "review_text": "I have to admit that the view is beyond amazing!! Dateng kesini pagi2 bgt dan masih bisa liat embun! Udaranya enak bgt, dingin, hijau, dan pemandangannya keren bgt😭 dateng pagi enak ga byk org dan bisa healing tipis2. Tiket masuk 10k/org kalo ga salah tp kmren dpet diskon wkwk Ada cafe di dalem tp bayar tiket masuk cafenya beda lagi terus dpet susu segar. Kalo ujan ga perlu khawatir karena ada tempat ngiyup nya. Lokasi ga begtu luas sih, tp jujur pemandangannya worth it."
+  },
+  {
+    "reviewer_name": "mai PAUD Ceria Sabena Kids II",
+    "rating": 4,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Rahman Agus Suandi",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Akhir pekan",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Tomic Julico",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Tomic Julico",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Rachelita Arthapriliana",
+    "rating": 5,
+    "date": "3 tahun lalu",
+    "visit_time": "Rachelita Arthapriliana",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Princess Aprilia",
+    "rating": 5,
+    "date": "4 tahun lalu",
+    "visit_time": "Princess Aprilia",
+    "review_text": "Sejuk dan yg pasti pemandangan indah bgt"
+  },
+  {
+    "reviewer_name": "Devi Juni",
+    "rating": 5,
+    "date": "4 tahun lalu",
+    "visit_time": "Devi Juni",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Juniar Fadhilah",
+    "rating": 5,
+    "date": "4 tahun lalu",
+    "visit_time": "Juniar Fadhilah",
+    "review_text": "Tempat nya sejuk, cocok untuk menenangkan pikiran...👍 …"
+  },
+  {
+    "reviewer_name": "Junico Andre Putra",
+    "rating": 5,
+    "date": "4 tahun lalu",
+    "visit_time": "Junico Andre Putra",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Julian Al",
+    "rating": 5,
+    "date": "4 tahun lalu",
+    "visit_time": "Julian Al",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "ahmad fredhe",
+    "rating": 2,
+    "date": "4 tahun lalu",
+    "visit_time": "Tiket masuk 10rb (agustus 2020)",
+    "review_text": "Tiket masuk 10rb (agustus 2020)"
+  },
+  {
+    "reviewer_name": "aprillia evi",
+    "rating": 5,
+    "date": "4 tahun lalu",
+    "visit_time": "aprillia evi",
+    "review_text": "Tempatnya adem, anginnya bikin menggigil, tiketnya murah, cuman 10rb"
+  },
+  {
+    "reviewer_name": "Christymerry Juliar",
+    "rating": 3,
+    "date": "5 tahun lalu",
+    "visit_time": "Christymerry Juliar",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Langlang Meilany",
+    "rating": 5,
+    "date": "6 tahun lalu",
+    "visit_time": "Langlang Meilany",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Nurtjahja Juniarsa",
+    "rating": 3,
+    "date": "6 tahun lalu",
+    "visit_time": "Nurtjahja Juniarsa",
+    "review_text": "Bagus .udara bersih. Baik buat selfi"
+  },
+  {
+    "reviewer_name": "Etty April Rianti",
+    "rating": 3,
+    "date": "6 tahun lalu",
+    "visit_time": "Etty April Rianti",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Julia Setyawardhani",
+    "rating": 5,
+    "date": "6 tahun lalu",
+    "visit_time": "Julia Setyawardhani",
+    "review_text": "Cuacanya dingin. Diterjemahkan oleh Google ・ Lihat versi asli (Melayu)"
+  },
+  {
+    "reviewer_name": "Isnaini Aprilia S",
+    "rating": 5,
+    "date": "6 tahun lalu",
+    "visit_time": "Isnaini Aprilia S",
+    "review_text": "Tempat yang bagus. Namun jika ingin mengunjungi tempat ini, jangan pada saat high season. Terlalu ramai dan Anda tidak akan bisa menikmati udara atau mengambil gambar. Diterjemahkan oleh Google ・ Lihat versi asli (Inggris)"
+  },
+  {
+    "reviewer_name": "Mei Budiarto",
+    "rating": 4,
+    "date": "6 tahun lalu",
+    "visit_time": "Mei Budiarto",
+    "review_text": "temapat yg sangat bagus untuk di kunjungi.."
+  },
+  {
+    "reviewer_name": "Leoni Preanita",
+    "rating": 5,
+    "date": "6 tahun lalu",
+    "visit_time": "24 desember 2018",
+    "review_text": "24 desember 2018 4 orang 3motor cuman 25rb ( kalo ga salah ) tempatnya sejuk."
+  },
+  {
+    "reviewer_name": "aprilia purnamasari",
+    "rating": 5,
+    "date": "6 tahun lalu",
+    "visit_time": "aprilia purnamasari",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Alfia Julia",
+    "rating": 2,
+    "date": "6 tahun lalu",
+    "visit_time": "Alfia Julia",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Fiki Juniantara",
+    "rating": 5,
+    "date": "6 tahun lalu",
+    "visit_time": "Fiki Juniantara",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Anita Meilina Akhmad",
+    "rating": 3,
+    "date": "6 tahun lalu",
+    "visit_time": "Anita Meilina Akhmad",
+    "review_text": ""
+  },
+  {
+    "reviewer_name": "Frista Mei",
+    "rating": 5,
+    "date": "7 tahun lalu",
+    "visit_time": "Frista Mei",
+    "review_text": "Seru, dingin, memori"
+  }
+]
