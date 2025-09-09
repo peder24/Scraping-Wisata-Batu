@@ -1,0 +1,377 @@
+================================================================================
+LAPORAN CLEANING DATA - BATU TOURISM REVIEWS
+================================================================================
+Generated: 2025-08-31 23:27:49
+Source folders: hasil scraping, hasil scraping rating rendah
+Total reviews: 35,644
+Total wisata: 30
+
+RINGKASAN CLEANING:
+✓ Total rows awal: 36,774
+✓ Total rows akhir: 35,644
+✓ Retention rate: 96.9%
+✓ Duplikat dihapus: 202
+✓ Outlier dihapus: 0
+✓ 'Waktu antrean' patterns dibersihkan: 1,877
+✓ Emoji dibersihkan: 2,424
+
+VERIFIKASI HASIL CLEANING:
+✓ 'Waktu antrean' tersisa: 0
+✓ Emoji tersisa: 0
+
+DETAIL SUMBER FILE PER WISATA:
+--------------------------------------------------------------------------------
+
+Air Terjun Coban Rais:
+  Status: SUCCESS (MERGED)
+  Files loaded: 3
+    - air_terjun_coban_rais_ALL_reviews_20250802_102141.csv (3358 rows) - from 'hasil scraping'
+    - coban_rais_reviews_20250804_223751.csv (25 rows) - from 'hasil scraping'
+    - air_terjun_coban_rais_reviews_1to3stars_with_text_20250828_135744.csv (200 rows) - from 'hasil scraping rating rendah'
+  Final rows: 3,410
+
+Alun Alun Kota Wisata Batu:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - alun_alun_kota_wisata_batu_reviews_20250725_105504.csv (759 rows) - from 'hasil scraping'
+    - alun_alun_batu_reviews_1to3stars_with_text_20250831_180701.csv (278 rows) - from 'hasil scraping rating rendah'
+  Final rows: 1,037
+
+Batu Economis Park:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - batu_economis_park_ALL_reviews_20250802_172842.csv (1892 rows) - from 'hasil scraping'
+    - batu_economis_park_reviews_1to3stars_with_text_20250828_161649.csv (302 rows) - from 'hasil scraping rating rendah'
+  Final rows: 2,040
+
+Batu Love Garden (Baloga):
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - batu_love_garden_baloga_ALL_reviews_20250802_181709.csv (403 rows) - from 'hasil scraping'
+    - batu_love_garden_baloga_reviews_1to3stars_with_text_20250828_204631.csv (259 rows) - from 'hasil scraping rating rendah'
+  Final rows: 647
+
+Batu Night Spectacular:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - batu_night_spectacular_ALL_reviews_20250724_154759.csv (631 rows) - from 'hasil scraping'
+    - bns_reviews_1to3stars_with_text_20250829_090737.csv (694 rows) - from 'hasil scraping rating rendah'
+  Final rows: 1,285
+
+Batu Rafting:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - batu_rafting_reviews_20250810_224610.csv (383 rows) - from 'hasil scraping'
+    - batu_rafting_reviews_1to3stars_with_text_20250829_010450.csv (27 rows) - from 'hasil scraping rating rendah'
+  Final rows: 392
+
+Coban Putri:
+  Status: SUCCESS
+  Files loaded: 1
+    - coban_putri_reviews_all_20250803_001704.csv (323 rows) - from 'hasil scraping'
+  Final rows: 323
+
+Coban Talun:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - coban_talun_ALL_reviews_20250724_114716.csv (1442 rows) - from 'hasil scraping'
+    - coban_talun_reviews_1to3stars_with_text_20250831_121410.csv (59 rows) - from 'hasil scraping rating rendah'
+  Final rows: 1,454
+
+Desa Wisata Punten:
+  Status: SUCCESS
+  Files loaded: 1
+    - desa_wisata_punten_reviews_20250810_230050.csv (4 rows) - from 'hasil scraping'
+  Final rows: 4
+
+Desa Wisata Tulungrejo:
+  Status: SUCCESS
+  Files loaded: 1
+    - desa_wisata_tulungrejo_reviews_20250802_013319.csv (4 rows) - from 'hasil scraping'
+  Final rows: 4
+
+Eco Active Park:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - eco_active_park_ALL_reviews_20250725_002543.csv (3660 rows) - from 'hasil scraping'
+    - ecopark_tulungrejo_reviews_1to3stars_with_text_20250829_175926.csv (172 rows) - from 'hasil scraping rating rendah'
+  Final rows: 3,781
+
+Gussari Goa Pinus Batu:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - gussari_goa_pinus_batu_ALL_reviews_20250811_021707.csv (1810 rows) - from 'hasil scraping'
+    - goa_pinus_reviews_1to3stars_with_text_20250829_194218.csv (79 rows) - from 'hasil scraping rating rendah'
+  Final rows: 1,827
+
+Gunung Arjuno:
+  Status: SUCCESS
+  Files loaded: 1
+    - gunung_arjuno_reviews_20250804_180540.csv (619 rows) - from 'hasil scraping'
+  Final rows: 619
+
+Gunung Panderman:
+  Status: SUCCESS
+  Files loaded: 1
+    - gunung_panderman_reviews_20250724_141423.csv (364 rows) - from 'hasil scraping'
+  Final rows: 364
+
+Jatim Park 1:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - jatim_park_1_ALL_reviews_20250723_140636.csv (1613 rows) - from 'hasil scraping'
+    - jatim_park1_reviews_1to3stars_with_text_20250829_224028.csv (214 rows) - from 'hasil scraping rating rendah'
+  Final rows: 1,794
+
+Jatim Park 2:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - jatim_park_2_ALL_reviews_20250725_114708.csv (1562 rows) - from 'hasil scraping'
+    - jatim_park2_reviews_1to3stars_with_text_20250830_010927.csv (195 rows) - from 'hasil scraping rating rendah'
+  Final rows: 1,746
+
+Jatim Park 3:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - jatim_park_3_ALL_reviews_20250725_011845.csv (525 rows) - from 'hasil scraping'
+    - jatim_park3_reviews_1to3stars_with_text_20250830_092313.csv (674 rows) - from 'hasil scraping rating rendah'
+  Final rows: 1,176
+
+Lumbung Stroberi:
+  Status: SUCCESS
+  Files loaded: 1
+    - lumbung_stroberi_ALL_reviews_20250804_160259.csv (549 rows) - from 'hasil scraping'
+  Final rows: 549
+
+Milenial Glow Garden:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - milenial_glow_garden_ALL_reviews_20250802_201820.csv (932 rows) - from 'hasil scraping'
+    - milenial_glow_garden_reviews_1to3stars_with_text_20250830_105812.csv (97 rows) - from 'hasil scraping rating rendah'
+  Final rows: 966
+
+Museum Angkut:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - museum_angkut_ALL_reviews_20250725_160008.csv (4686 rows) - from 'hasil scraping'
+    - museum_angkut_reviews_1to3stars_with_text_20250830_182721.csv (466 rows) - from 'hasil scraping rating rendah'
+  Final rows: 5,074
+
+Paralayang Gunung Banyak:
+  Status: SUCCESS
+  Files loaded: 1
+    - paralayang_gunung_banyak_reviews_20250802_235154.csv (100 rows) - from 'hasil scraping'
+  Final rows: 100
+
+Pemandian Air Panas Cangar:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - pemandian_air_panas_cangar_ALL_reviews_20250802_230623.csv (1559 rows) - from 'hasil scraping'
+    - permandian_air_panas_cangar_reviews_1to3stars_with_text_20250830_213548.csv (211 rows) - from 'hasil scraping rating rendah'
+  Final rows: 1,676
+
+Songgoriti Hot Springs:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - songgoriti_hot_springs_all_reviews_20250804_192319.csv (997 rows) - from 'hasil scraping'
+    - songgoriti_hot_spring_reviews_1to3stars_with_text_20250830_220759.csv (139 rows) - from 'hasil scraping rating rendah'
+  Final rows: 1,068
+
+Taman Dolan:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - taman_dolan_ALL_reviews_20250804_174157.csv (608 rows) - from 'hasil scraping'
+    - taman_dolan_reviews_1to3stars_with_text_20250831_020414.csv (310 rows) - from 'hasil scraping rating rendah'
+  Final rows: 796
+
+Taman Pinus Campervan:
+  Status: SUCCESS
+  Files loaded: 1
+    - taman_pinus_campervan_ALL_reviews_20250804_160757.csv (540 rows) - from 'hasil scraping'
+  Final rows: 539
+
+Taman Selecta:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - taman_selecta_ALL_reviews_20250724_085149.csv (900 rows) - from 'hasil scraping'
+    - taman_selecta_reviews_1to3stars_with_text_20250831_104640.csv (551 rows) - from 'hasil scraping rating rendah'
+  Final rows: 1,433
+
+Tirta Nirwana Hotspring:
+  Status: SUCCESS (MERGED)
+  Files loaded: 2
+    - tirta_nirwana_songgoriti_all_reviews_20250803_011926.csv (10 rows) - from 'hasil scraping'
+    - tirta_nirwana_songgoriti_all_reviews_newest_20250804_213237.csv (612 rows) - from 'hasil scraping'
+  Final rows: 621
+
+Wisata Bunga Sidomulyo:
+  Status: SUCCESS (MERGED)
+  Files loaded: 3
+    - wisata_bunga_sidomulyo_reviews_20250802_174108.csv (66 rows) - from 'hasil scraping'
+    - wisata_bunga_sidomulyo_reviews_20250803_012801.csv (15 rows) - from 'hasil scraping'
+    - rest_area_desa_wisata_sidomulyo_reviews_20250802_174921.csv (3 rows) - from 'hasil scraping'
+  Final rows: 84
+
+Wisata Desa Agro Bumiaji:
+  Status: SUCCESS
+  Files loaded: 1
+    - wisata_desa_agro_bumiaji_reviews_20250804_150849.csv (142 rows) - from 'hasil scraping'
+  Final rows: 142
+
+Wisata Petik Apel Mandiri:
+  Status: SUCCESS
+  Files loaded: 1
+    - wisata_petik_apel_mandiri_reviews_20250804_181035.csv (751 rows) - from 'hasil scraping'
+  Final rows: 751
+
+DISTRIBUSI DATA:
+Rata-rata rating: 4.26
+Rata-rata panjang review: 127 karakter
+
+Distribusi Rating:
+  Rating 1: 2,168 (6.1%)
+  Rating 2: 1,628 (4.6%)
+  Rating 3: 3,175 (8.9%)
+  Rating 4: 6,512 (18.3%)
+  Rating 5: 22,161 (62.2%)
+
+Distribusi Waktu Kunjungan:
+  'Tidak diketahui': 26,521 (74.4%)
+  'Akhir pekan': 3,249 (9.1%)
+  'Hari biasa': 2,700 (7.6%)
+  'Hari libur nasional': 1,436 (4.0%)
+
+TOP 10 WISATA (berdasarkan jumlah review):
+   1. Museum Angkut: 5,073 reviews (14.2%) - Rating: 4.59
+   2. Eco Active Park: 3,780 reviews (10.6%) - Rating: 4.55
+   3. Air Terjun Coban Rais: 3,409 reviews (9.6%) - Rating: 4.12
+   4. Batu Economis Park: 2,040 reviews (5.7%) - Rating: 4.33
+   5. Gussari Goa Pinus Batu: 1,824 reviews (5.1%) - Rating: 4.26
+   6. Jatim Park 1: 1,794 reviews (5.0%) - Rating: 4.32
+   7. Jatim Park 2: 1,746 reviews (4.9%) - Rating: 4.40
+   8. Pemandian Air Panas Cangar: 1,676 reviews (4.7%) - Rating: 4.07
+   9. Coban Talun: 1,454 reviews (4.1%) - Rating: 4.52
+  10. Taman Selecta: 1,433 reviews (4.0%) - Rating: 3.78
+
+DETAIL STATISTIK PER WISATA:
+--------------------------------------------------------------------------------
+ 1. Museum Angkut
+    Reviews: 5,073
+    Avg Rating: 4.59
+    Avg Review Length: 126 chars
+ 2. Eco Active Park
+    Reviews: 3,780
+    Avg Rating: 4.55
+    Avg Review Length: 130 chars
+ 3. Air Terjun Coban Rais
+    Reviews: 3,409
+    Avg Rating: 4.12
+    Avg Review Length: 59 chars
+ 4. Batu Economis Park
+    Reviews: 2,040
+    Avg Rating: 4.33
+    Avg Review Length: 142 chars
+ 5. Gussari Goa Pinus Batu
+    Reviews: 1,824
+    Avg Rating: 4.26
+    Avg Review Length: 25 chars
+ 6. Jatim Park 1
+    Reviews: 1,794
+    Avg Rating: 4.32
+    Avg Review Length: 177 chars
+ 7. Jatim Park 2
+    Reviews: 1,746
+    Avg Rating: 4.40
+    Avg Review Length: 257 chars
+ 8. Pemandian Air Panas Cangar
+    Reviews: 1,676
+    Avg Rating: 4.07
+    Avg Review Length: 187 chars
+ 9. Coban Talun
+    Reviews: 1,454
+    Avg Rating: 4.52
+    Avg Review Length: 52 chars
+10. Taman Selecta
+    Reviews: 1,433
+    Avg Rating: 3.78
+    Avg Review Length: 186 chars
+11. Batu Night Spectacular
+    Reviews: 1,285
+    Avg Rating: 3.33
+    Avg Review Length: 185 chars
+12. Jatim Park 3
+    Reviews: 1,176
+    Avg Rating: 3.25
+    Avg Review Length: 221 chars
+13. Songgoriti Hot Springs
+    Reviews: 1,046
+    Avg Rating: 4.24
+    Avg Review Length: 116 chars
+14. Alun Alun Kota Wisata Batu
+    Reviews: 1,011
+    Avg Rating: 3.85
+    Avg Review Length: 201 chars
+15. Milenial Glow Garden
+    Reviews: 965
+    Avg Rating: 4.50
+    Avg Review Length: 97 chars
+16. Taman Dolan
+    Reviews: 796
+    Avg Rating: 3.70
+    Avg Review Length: 152 chars
+17. Wisata Petik Apel Mandiri
+    Reviews: 751
+    Avg Rating: 4.73
+    Avg Review Length: 49 chars
+18. Batu Love Garden (Baloga)
+    Reviews: 647
+    Avg Rating: 3.77
+    Avg Review Length: 186 chars
+19. Tirta Nirwana Hotspring
+    Reviews: 620
+    Avg Rating: 4.33
+    Avg Review Length: 50 chars
+20. Gunung Arjuno
+    Reviews: 619
+    Avg Rating: 4.55
+    Avg Review Length: 79 chars
+21. Lumbung Stroberi
+    Reviews: 549
+    Avg Rating: 4.42
+    Avg Review Length: 77 chars
+22. Taman Pinus Campervan
+    Reviews: 539
+    Avg Rating: 4.63
+    Avg Review Length: 90 chars
+23. Batu Rafting
+    Reviews: 390
+    Avg Rating: 4.34
+    Avg Review Length: 26 chars
+24. Gunung Panderman
+    Reviews: 364
+    Avg Rating: 4.59
+    Avg Review Length: 72 chars
+25. Coban Putri
+    Reviews: 323
+    Avg Rating: 4.61
+    Avg Review Length: 80 chars
+26. Wisata Desa Agro Bumiaji
+    Reviews: 142
+    Avg Rating: 4.35
+    Avg Review Length: 21 chars
+27. Paralayang Gunung Banyak
+    Reviews: 100
+    Avg Rating: 4.32
+    Avg Review Length: 92 chars
+28. Wisata Bunga Sidomulyo
+    Reviews: 84
+    Avg Rating: 4.57
+    Avg Review Length: 38 chars
+29. Desa Wisata Punten
+    Reviews: 4
+    Avg Rating: 5.00
+    Avg Review Length: 0 chars
+30. Desa Wisata Tulungrejo
+    Reviews: 4
+    Avg Rating: 5.00
+    Avg Review Length: 46 chars

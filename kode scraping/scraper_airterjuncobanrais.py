@@ -346,6 +346,63 @@ def expand_review_safely(driver, element):
     except:
         return False
 
+def categorize_visit_time(visit_time_text):
+    """Categorize visit time into predefined categories"""
+    if not visit_time_text:
+        return "Tidak diketahui"
+    
+    visit_time_lower = visit_time_text.lower().strip()
+    
+    # Akhir pekan patterns
+    weekend_patterns = [
+        'sabtu', 'minggu', 'weekend', 'akhir pekan', 'saturday', 'sunday',
+        'sabtu minggu', 'weekend', 'fin de semana'
+    ]
+    
+    # Hari biasa patterns
+    weekday_patterns = [
+        'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'hari kerja', 'weekday',
+        'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'hari biasa'
+    ]
+    
+    # Hari libur nasional patterns
+    holiday_patterns = [
+        'libur', 'holiday', 'cuti', 'liburan', 'natal', 'tahun baru', 'idul fitri',
+        'lebaran', 'nyepi', 'waisak', 'kemerdekaan', 'kartini', 'hari raya',
+        'long weekend', 'libur panjang', 'hari libur', 'public holiday',
+        'national holiday', 'festive', 'celebration'
+    ]
+    
+    # Check for holiday first (highest priority)
+    for pattern in holiday_patterns:
+        if pattern in visit_time_lower:
+            return "Hari libur nasional"
+    
+    # Check for weekend
+    for pattern in weekend_patterns:
+        if pattern in visit_time_lower:
+            return "Akhir pekan"
+    
+    # Check for weekday
+    for pattern in weekday_patterns:
+        if pattern in visit_time_lower:
+            return "Hari biasa"
+    
+    # If contains month names but no specific day type, classify as "Tidak diketahui"
+    month_patterns = ['januari', 'februari', 'maret', 'april', 'mei', 'juni',
+                     'juli', 'agustus', 'september', 'oktober', 'november', 'desember',
+                     'january', 'february', 'march', 'april', 'may', 'june',
+                     'july', 'august', 'september', 'october', 'november', 'december']
+    
+    has_month = any(month in visit_time_lower for month in month_patterns)
+    
+    if has_month:
+        # If it's just a month/year without day type specification
+        return "Tidak diketahui"
+    
+    # Default
+    return "Tidak diketahui"
+
 def parse_review_element_with_expand(driver, element):
     """Parse a single review element with expanding"""
     try:
@@ -416,26 +473,28 @@ def parse_review_element_with_expand(driver, element):
         
         review_data['date'] = date
         
-        # Extract visit time
-        visit_time = ""
+        # Extract visit time (raw)
+        visit_time_raw = ""
         for i, line in enumerate(lines):
             if 'waktu kunjungan' in line.lower():
                 if i + 1 < len(lines):
-                    visit_time = lines[i + 1].strip()
+                    visit_time_raw = lines[i + 1].strip()
                     break
         
-        if not visit_time:
+        if not visit_time_raw:
             month_patterns = ['januari', 'februari', 'maret', 'april', 'mei', 'juni', 
                             'juli', 'agustus', 'september', 'oktober', 'november', 'desember']
             for line in lines:
                 for month in month_patterns:
                     if month in line.lower() and len(line) < 50:
-                        visit_time = line.strip()
+                        visit_time_raw = line.strip()
                         break
-                if visit_time:
+                if visit_time_raw:
                     break
         
-        review_data['visit_time'] = visit_time
+        # Categorize visit time
+        visit_time_categorized = categorize_visit_time(visit_time_raw)
+        review_data['visit_time'] = visit_time_categorized
         
         # Extract review text
         review_text = ""
@@ -463,6 +522,9 @@ def parse_review_element_with_expand(driver, element):
         review_text = clean_review_text(review_text)
         review_data['review_text'] = review_text
         
+        # Add wisata name
+        review_data['wisata'] = "Air Terjun Coban Rais"
+        
         return review_data
         
     except Exception as e:
@@ -477,7 +539,7 @@ def create_output_folder():
     return folder_path
 
 def scrape_air_terjun_coban_rais():
-    """Main scraping function for Air Terjun Coban Rais with improved scrolling"""
+    """Main scraping function for Air Terjun Coban Rais - comprehensive scraping"""
     
     # URL untuk Air Terjun Coban Rais
     url = "https://www.google.com/maps/place/Air+Terjun+Coban+Rais/@-7.9116767,112.5158539,17z/data=!4m8!3m7!1s0x2e7886b525a4c713:0xd3724f41de186939!8m2!3d-7.9116767!4d112.5184342!9m1!1b1!16s%2Fg%2F11c3k55893?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D"
@@ -485,7 +547,6 @@ def scrape_air_terjun_coban_rais():
     print("Setting up Firefox driver...")
     driver = None
     all_reviews = []
-    all_reviews_without_visit_time = []
     
     # Create output folder
     output_folder = create_output_folder()
@@ -524,10 +585,10 @@ def scrape_air_terjun_coban_rais():
             return
         
         # Start collecting reviews
-        print(f"Starting to collect reviews (with improved scrolling)...")
+        print(f"Starting comprehensive review collection...")
         scroll_count = 0
         consecutive_no_new = 0
-        max_consecutive_no_new = 10  # Reduced from 20 for more aggressive scrolling
+        max_consecutive_no_new = 10
         
         while len(all_reviews) < target_reviews:
             try:
@@ -567,14 +628,11 @@ def scrape_air_terjun_coban_rais():
                         review_data = parse_review_element_with_expand(driver, element)
                         
                         if review_data:
-                            all_reviews_without_visit_time.append(review_data)
+                            all_reviews.append(review_data)
+                            new_reviews_count += 1
                             
-                            if review_data.get('visit_time'):
-                                all_reviews.append(review_data)
-                                new_reviews_count += 1
-                                
-                                if len(all_reviews) % 10 == 0:
-                                    print(f"Collected {len(all_reviews)} reviews with visit_time")
+                            if len(all_reviews) % 10 == 0:
+                                print(f"Collected {len(all_reviews)} reviews")
                     
                     except Exception as e:
                         continue
@@ -591,7 +649,7 @@ def scrape_air_terjun_coban_rais():
                     scroll_success = scroll_to_load_more(driver, scrollable_div, scroll_attempts=5)
                     if scroll_success:
                         print("Additional content loaded after aggressive scrolling")
-                        consecutive_no_new = max(0, consecutive_no_new - 2)  # Reset counter partially
+                        consecutive_no_new = max(0, consecutive_no_new - 2)
                     
                     if consecutive_no_new >= max_consecutive_no_new:
                         print("\nReached Google Maps review limit after multiple scroll attempts.")
@@ -615,43 +673,33 @@ def scrape_air_terjun_coban_rais():
                 continue
         
         # Save final results
-        print(f"\nCompleted scraping!")
-        print(f"Total reviews with visit_time: {len(all_reviews)}")
-        print(f"Total reviews collected: {len(all_reviews_without_visit_time)}")
+        print(f"\nCompleted comprehensive scraping!")
+        print(f"Total reviews collected: {len(all_reviews)}")
         
-        if all_reviews or all_reviews_without_visit_time:
+        if all_reviews:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             
-            # Save reviews with visit_time
-            if all_reviews:
-                df = pd.DataFrame(all_reviews)
-                column_order = ['reviewer_name', 'rating', 'date', 'visit_time', 'review_text']
-                df = df.reindex(columns=column_order)
-                
-                csv_filename = os.path.join(output_folder, f'air_terjun_coban_rais_reviews_with_visit_time_{timestamp}.csv')
-                df.to_csv(csv_filename, index=False, encoding='utf-8-sig')
-                print(f"Data saved to {csv_filename}")
-                
-                json_filename = os.path.join(output_folder, f'air_terjun_coban_rais_reviews_with_visit_time_{timestamp}.json')
-                with open(json_filename, 'w', encoding='utf-8') as f:
-                    json.dump(all_reviews, f, ensure_ascii=False, indent=2)
-                print(f"JSON data saved to {json_filename}")
+            # Create DataFrame with correct column order
+            df = pd.DataFrame(all_reviews)
+            column_order = ['reviewer_name', 'rating', 'date', 'visit_time', 'review_text', 'wisata']
+            df = df.reindex(columns=column_order)
             
-            # Save all reviews as backup
-            if all_reviews_without_visit_time:
-                df_all = pd.DataFrame(all_reviews_without_visit_time)
-                df_all = df_all.reindex(columns=['reviewer_name', 'rating', 'date', 'visit_time', 'review_text'], fill_value='')
-                backup_filename = os.path.join(output_folder, f'air_terjun_coban_rais_ALL_reviews_{timestamp}.csv')
-                df_all.to_csv(backup_filename, index=False, encoding='utf-8-sig')
-                print(f"Backup data saved to {backup_filename}")
+            # Save comprehensive CSV
+            csv_filename = os.path.join(output_folder, f'air_terjun_coban_rais_reviews_comprehensive_{timestamp}.csv')
+            df.to_csv(csv_filename, index=False, encoding='utf-8-sig')
+            print(f"Comprehensive data saved to {csv_filename}")
             
             # Print summary statistics
-            if all_reviews and 'rating' in df.columns:
+            if 'rating' in df.columns:
                 valid_ratings = df[df['rating'] > 0]['rating']
                 if len(valid_ratings) > 0:
                     print(f"\nAverage rating: {valid_ratings.mean():.2f}")
                     print(f"Rating distribution:")
                     print(df['rating'].value_counts().sort_index())
+                
+                # Print visit_time distribution
+                print(f"\nVisit time distribution:")
+                print(df['visit_time'].value_counts())
         
     except Exception as e:
         print(f"Fatal error: {str(e)}")
@@ -666,11 +714,12 @@ def scrape_air_terjun_coban_rais():
                 pass
 
 if __name__ == "__main__":
-    print("=== AIR TERJUN COBAN RAIS REVIEW SCRAPER (IMPROVED SCROLLING) ===")
-    print("Target: 2000 reviews with visit_time")
-    print("Features: Aggressive scrolling, Text expansion enabled, Sort by 'Paling relevan'")
-    print("Output folder: hasil scraping")
-    print("Note: Will perform aggressive scrolling when no new content is found\n")
+    print("=== AIR TERJUN COBAN RAIS COMPREHENSIVE REVIEW SCRAPER ===")
+    print("Target: 2000 reviews (comprehensive collection)")
+    print("Features: All reviews included, Visit time categorized, Single CSV output")
+    print("Visit time categories: ['Akhir pekan', 'Hari biasa', 'Hari libur nasional', 'Tidak diketahui']")
+    print("Output format: reviewer_name,rating,date,visit_time,review_text,wisata")
+    print("Output folder: hasil scraping\n")
     
     scrape_air_terjun_coban_rais()
     
